@@ -7,12 +7,25 @@ const LoginForm = () => {
   const [step, setStep] = useState(1);
   let animationEl= useRef<HTMLDivElement>(null);
   const stepRef =  useRef<HTMLDivElement>(null);
+  const animationheight = { from: window.innerHeight, to: window.innerHeight/4 };
 
+  useEffect(() => {
+    if (step === 1 && animationEl.current) {
+      console.log(window.innerHeight, animationEl.current.offsetTop)
+      gsap.fromTo(
+        stepRef.current,
+        { y: animationheight.from },
+        {
+          y: animationheight.to,
+          duration: 1.5,
+          ease: 'expo.out',
+        }
+      );
+    }
+  }, []);
   const handleContinue = () => {
     if (step === 1) {
-      console.log(stepRef.current?.offsetHeight)
-      console.log(stepRef.current?.children)
-      gsap.fromTo(stepRef.current, { y: window.innerHeight}, { y: animationEl.current?.offsetTop,duration: 1.5,ease: "expo.out",onStart: () => setStep(2) });
+      gsap.fromTo(stepRef.current, { y: animationheight.from}, { y: animationheight.to,duration: 1.5,ease: "expo.out",onStart: () => setStep(2) });
       // console.log(stepRef.current)
     } else if (step === 2) {
       // console.log(username, password);     

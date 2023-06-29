@@ -5,6 +5,17 @@ import styles from '../../auth.module.css';
 
 const App = () => {
     const navigate = useNavigate();
+
+    const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault(); 
+      navigate('/login');
+    };
+  
+    const handleRegister = (event: React.MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault(); 
+      navigate('/register');
+    };
+
   return (
     <div className={styles.container}>
       <div>
@@ -19,8 +30,8 @@ const App = () => {
     I agree to the Terms & Conditions and Privacy Policy
     </div>
     <div className={styles['btn-container']}>
-      <button className={styles['btn-login']} onClick={() => navigate('/login')}>Go to Login</button>
-    <button className={styles['btn-signUp']} onClick={() => navigate('/register')}>Go to Register</button>
+      <button className={styles['btn-login']} onClick={handleLogin}>Go to Login</button>
+    <button className={styles['btn-signUp']} onClick={handleRegister}>Go to Register</button>
     </div>
     </div>
     </div>
