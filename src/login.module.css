@@ -1,6 +1,9 @@
 body{
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
 }
+.parent{
+  
+}
 .container{
     position: absolute;
     /* width: 900px; */
@@ -46,3 +49,5 @@ body{
     color: #FFF;
     border: none;
 }
+
+/*  PASSWORD STYLING !!!!!!!!!!!!!! */
