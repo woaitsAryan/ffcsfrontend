@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../../auth.module.css';
+import styles from '../../css/auth.module.css';
 
 
 const App = () => {

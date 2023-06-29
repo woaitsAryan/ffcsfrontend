@@ -1,6 +1,6 @@
 import React, { useState, useRef,useEffect } from 'react';
 import { gsap } from 'gsap';
-import styles from '../../login.module.css'
+import styles from '../../css/login.module.css'
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
