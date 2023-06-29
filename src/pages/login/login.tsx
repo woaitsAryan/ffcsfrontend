@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { gsap } from 'gsap';
-
+import styles from '../../login.module.css'
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,13 +22,15 @@ const LoginForm = () => {
     <div>
       <div ref={stepRef}>
         {step === 1 && (
-          <div>
-            <h2>Enter Username</h2>
+          <div className={styles.container}>
+            <p className={styles.step}>Step 2/<p className={styles['step-number']}>3</p></p>
+            <h2 className={styles['username-txt']}>Enter Username</h2>
             <input
-              type="text"
+              type="text" placeholder='Enter Username' className={styles['username-field']}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+             <button className={styles['continue-btn']} onClick={handleContinue}>Continue</button>
           </div>
         )}
 
@@ -40,11 +42,12 @@ const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+             <button onClick={handleContinue}>Continue</button>
           </div>
         )}
       </div>
 
-      <button onClick={handleContinue}>Continue</button>
+     
     </div>
   );
 };
