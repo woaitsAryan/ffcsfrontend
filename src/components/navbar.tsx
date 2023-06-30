@@ -18,13 +18,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ''}`}>
-      <div className={styles.heading}>FFCS Planner</div>
-      <ul className={styles.navLinks}>
-        <li className={styles.navItem}>Login</li>
-        <li className={styles.navItem}>Sign Up</li>
-      </ul>
-    </nav>
+      <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ''}`}>
+        <div className={styles.heading}>FFCS Planner</div>
+        <ul className={styles.navLinks}>
+          <li className={styles.navItem}>Login</li>
+          <li className={styles.navItem}>Sign Up</li>
+        </ul>
+      </nav>
   );
 };
 
