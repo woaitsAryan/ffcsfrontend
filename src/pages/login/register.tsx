@@ -1,51 +1,67 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 import { gsap } from 'gsap';
-import { useNavigate } from 'react-router-dom';
+import styles from '../../css/login.module.css'
 const LoginForm = () => {
-  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [step, setStep] = useState(1);
+  let animationEl= useRef<HTMLDivElement>(null);
+  const stepRef =  useRef<HTMLDivElement>(null);
+  const animationheight = { from: window.innerHeight, to: window.innerHeight/4 };
 
-  const stepRef = useRef(null);
-
+  useEffect(() => {
+    if (step === 1 && animationEl.current) {
+      console.log(window.innerHeight, animationEl.current.offsetTop)
+      gsap.fromTo(
+        stepRef.current,
+        { y: animationheight.from },
+        {
+          y: animationheight.to,
+          duration: 1.5,
+          ease: 'expo.out',
+        }
+      );
+    }
+  }, []);
   const handleContinue = () => {
     if (step === 1) {
-      gsap.fromTo(stepRef.current, { x: window.innerWidth }, { x: 0, duration: 0.5, onStart: () => setStep(2) });
+      gsap.fromTo(stepRef.current, { y: animationheight.from}, { y: animationheight.to,duration: 1.5,ease: "expo.out",onStart: () => setStep(2) });
+      // console.log(stepRef.current)
     } else if (step === 2) {
-      console.log(username, password);
-      //save credentials and redirect to login page
-      navigate('/login');
+      // console.log(username, password);     
     }
   };
-
   return (
     <div>
-      <div ref={stepRef}>
+      <div ref={stepRef} className={styles.parent}>
         {step === 1 && (
-          <div>
-            <h2>Enter Username</h2>
+          <div className={styles.container} ref={animationEl}  >
+            <p className={styles.step}>Step {step+1}/<p className={styles['step-number']}>3</p></p>
+            <h2 className={styles['username-txt']}>Enter Username</h2>
             <input
-              type="text"
+              type="text" placeholder='Enter Username' className={styles['username-field']}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+             <button className={styles['continue-btn']} onClick={handleContinue}>Continue</button>
           </div>
         )}
 
         {step === 2 && (
-          <div>
-            <h2>Enter Password</h2>
+          <div className={styles.container} >
+            <p className={styles.step}>Step {step+1}/<p className={styles['step-number']}>3</p></p>
+            <h2 className={styles['username-txt']}>Enter Password</h2>
             <input
-              type="password"
-              value={password}
+              type="password" className={styles['username-field']}
+              value={password} placeholder='Enter password'
               onChange={(e) => setPassword(e.target.value)}
             />
+             <button onClick={handleContinue} className={styles['continue-btn']}>Continue</button>
           </div>
         )}
       </div>
 
-      <button onClick={handleContinue}>Continue</button>
+     
     </div>
   );
 };

@@ -36,7 +36,7 @@ const LoginForm = () => {
       <div ref={stepRef} className={styles.parent}>
         {step === 1 && (
           <div className={styles.container} ref={animationEl}  >
-            <p className={styles.step}>Step 2/<p className={styles['step-number']}>3</p></p>
+            <p className={styles.step}>Step {step+1}/<p className={styles['step-number']}>3</p></p>
             <h2 className={styles['username-txt']}>Enter Username</h2>
             <input
               type="text" placeholder='Enter Username' className={styles['username-field']}
@@ -49,7 +49,7 @@ const LoginForm = () => {
 
         {step === 2 && (
           <div className={styles.container} >
-            <p className={styles.step}>Step 3/<p className={styles['step-number']}>3</p></p>
+            <p className={styles.step}>Step {step+1}/<p className={styles['step-number']}>3</p></p>
             <h2 className={styles['username-txt']}>Enter Password</h2>
             <input
               type="password" className={styles['username-field']}
