@@ -1,5 +1,6 @@
 import React, { useState, useRef,useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useNavigate } from 'react-router-dom';
 import styles from '../../css/login.module.css'
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ const LoginForm = () => {
   let animationEl= useRef<HTMLDivElement>(null);
   const stepRef =  useRef<HTMLDivElement>(null);
   const animationheight = { from: window.innerHeight, to: window.innerHeight/4 };
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (step === 1 && animationEl.current) {
@@ -28,12 +30,13 @@ const LoginForm = () => {
       gsap.fromTo(stepRef.current, { y: animationheight.from}, { y: animationheight.to,duration: 1.5,ease: "expo.out",onStart: () => setStep(2) });
       // console.log(stepRef.current)
     } else if (step === 2) {
-      // console.log(username, password);     
+      // send username, password to backend
+      navigate("/auth");
     }
   };
   return (
     <div>
-      <div ref={stepRef} className={styles.parent}>
+      <div ref={stepRef}>
         {step === 1 && (
           <div className={styles.container} ref={animationEl}  >
             <p className={styles.step}>Step {step+1}/<p className={styles['step-number']}>3</p></p>
