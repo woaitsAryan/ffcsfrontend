@@ -14,13 +14,13 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin, onRegister }) => {
   const handleLogin = () => {
     setTimeout(() => {
       navigate('/auth', { state: { buttonClicked: 'login' } });
-    }, 50); // Adjust the duration of the fade-out animation here
+    }, 0); // duration must be 0 
   };
 
   const handleRegister = () => {
     setTimeout(() => {
       navigate('/auth', { state: { buttonClicked: 'register' } });
-    }, 0); // Adjust the duration of the fade-out animation here
+    }, 0); // duration must be 0
   };
 
   useEffect(() => {

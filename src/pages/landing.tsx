@@ -12,7 +12,7 @@ const Landing = () => {
   };
 
   const handleRegister = () => {
-    navigate('/register');
+    navigate('/auth');
   };
 
   return (
