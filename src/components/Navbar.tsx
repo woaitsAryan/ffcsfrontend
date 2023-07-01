@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from '../css/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
 
-interface NavbarProps {
-  onLogin: () => void;
-  onRegister: () => void;
-}
 
-const Navbar: React.FC<NavbarProps> = ({ onLogin, onRegister }) => {
+const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [isSticky, setIsSticky] = useState(false);
 
@@ -37,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ onLogin, onRegister }) => {
   }, []);
 
   return (
-    <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ''}`}>
+    <nav className={styles.navbar}>
       <div className={styles.heading}>FFCS Planner</div>
       <ul className={styles.navLinks}>
         <li className={styles.navItem} onClick={handleLogin}>
