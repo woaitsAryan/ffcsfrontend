@@ -2,17 +2,24 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-const Landing = () => {
-    const navigate = useNavigate();
+import { ButtonProvider } from '../buttonContext';
 
+const Landing = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate('/auth');
+  };
+
+  const handleRegister = () => {
+    navigate('/register');
+  };
 
   return (
-    <div>
-        <Navbar />
-      <h1>Click here to go to the Auth page!</h1>
-        <button onClick={() => navigate('/auth')}>Go to Auth</button>
-        <Hero></Hero>
-    </div>
+    <ButtonProvider>
+      <Navbar onLogin={handleLogin} onRegister={handleRegister} />
+      <Hero />
+    </ButtonProvider>
   );
 };
 

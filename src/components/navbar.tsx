@@ -1,8 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../css/navbar.module.css';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = () => {
+interface NavbarProps {
+  onLogin: () => void;
+  onRegister: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onLogin, onRegister }) => {
+  const navigate = useNavigate();
   const [isSticky, setIsSticky] = useState(false);
+
+  const handleLogin = () => {
+    setTimeout(() => {
+      navigate('/auth', { state: { buttonClicked: 'login' } });
+    }, 50); // Adjust the duration of the fade-out animation here
+  };
+
+  const handleRegister = () => {
+    setTimeout(() => {
+      navigate('/auth', { state: { buttonClicked: 'register' } });
+    }, 0); // Adjust the duration of the fade-out animation here
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,13 +37,17 @@ const Navbar = () => {
   }, []);
 
   return (
-      <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ''}`}>
-        <div className={styles.heading}>FFCS Planner</div>
-        <ul className={styles.navLinks}>
-          <li className={styles.navItem}>Login</li>
-          <li className={styles.navItem}>Sign Up</li>
-        </ul>
-      </nav>
+    <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ''}`}>
+      <div className={styles.heading}>FFCS Planner</div>
+      <ul className={styles.navLinks}>
+        <li className={styles.navItem} onClick={handleLogin}>
+          Login
+        </li>
+        <li className={styles.navItem} onClick={handleRegister}>
+          Sign Up
+        </li>
+      </ul>
+    </nav>
   );
 };
 
