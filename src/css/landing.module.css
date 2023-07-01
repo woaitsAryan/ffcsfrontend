@@ -2,8 +2,15 @@ body{
     overflow-y: scroll;
     overflow-x: hidden;
 }
+.courseTypeContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
 .course-type{
     font-size: 3.5rem;
     font-weight: 700;
-    margin-left: 3%;
+    margin-left:3%;
+    margin-bottom:3%
 }
