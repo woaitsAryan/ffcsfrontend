@@ -18,7 +18,7 @@ const Landing = () => {
     <p className={Styles['course-type']}>Course Type</p>
     <div className={Styles['courseTypeContainer']}>
     <CourseType name='Discipline Core' imagePath='Flask Icon.svg'></CourseType>
-    <CourseType name=' Core' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
     </div>
     </div>
   );
