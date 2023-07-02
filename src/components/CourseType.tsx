@@ -9,10 +9,12 @@ interface CourseTypeProps {
 
   const CourseType: React.FC<CourseTypeProps> = ({ name, imagePath }) => {
     return (
-      <div>
-        <h2>{name}</h2>
-        <img src={imagePath} alt="Course" />
-      </div>
+      
+        <div className={styles['container']}>
+        <img className={styles['image']} src={imagePath} alt="Course" />
+        <p className={styles['title']}>{name}</p>
+        </div>
+      
     );
   };
 

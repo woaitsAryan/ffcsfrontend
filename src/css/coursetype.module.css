@@ -1,0 +1,26 @@
+.container {
+    min-width: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 10px solid black;
+    border-radius: 20px;
+    margin-left: 3%;
+  }
+  
+  .image {
+    width: 70%;
+    height: 70%;
+    flex: 1;
+    object-fit: contain;
+  }
+  
+  .title {
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
