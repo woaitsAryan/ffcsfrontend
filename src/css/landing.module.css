@@ -2,20 +2,40 @@
     overflow-y: scroll;
     overflow-x: hidden;
 } */
-body::-webkit-scrollbar{
-    display: none;
-  }
+.mainflexbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainflexbox2{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
 .courseTypeContainer::-webkit-scrollbar{
     display: none;
 }
+/* .gradeint{
+    position: sticky;
+    background-attachment: fixed;
+    left: 1%;
+    width:5%;
+    height:100%;
+    position: absolute;
+    background: linear-gradient(to right, black, transparent);
+    opacity: 50%;
+    border-radius: 20px;
+} */
+
 .courseTypeContainer{
     scrollbar-width: none;   
     grid-auto-flow: dense;
     gap: 1rem;
-    position: relative;
+    position: sticky;
     left: 3%;
-    scroll-snap-align: start;
-    max-width: 90%;
+    scroll-snap-align: start end;
+    max-width: 93%;
     overscroll-behavior-inline: contain;
     display: grid;
     /* gap: 1rem; */
@@ -24,6 +44,35 @@ body::-webkit-scrollbar{
     grid-auto-flow: column;
     grid-auto-columns:20% ;
 }
+
+   /* .courseTypeContainer::before {
+    content: '';
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+    left: 2%;
+    bottom: 0;
+    width: 25%;
+    
+    background: linear-gradient(to right, black, transparent);
+    pointer-events: none;
+    z-index: 1;
+  } */
+  
+  /* .courseTypeContainer::after {
+    content: '';
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+    left: 0%;
+    bottom: 0;
+    width: 25%;
+    
+    background: linear-gradient(to right, black, transparent);
+    pointer-events: none;
+    z-index: 1;
+  } */
+  
 .title {  
     margin-top: 1rem;
     font-size: 3.5rem;
