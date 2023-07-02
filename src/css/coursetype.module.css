@@ -1,16 +1,22 @@
 .container {
+    
     min-width: 5%;
     display: flex;
+    scroll-snap-align: start;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border: 10px solid black;
     border-radius: 20px;
     margin-left: 3%;
+    
   }
   
+  
+  
   .image {
-    width: 70%;
+    inline-size: 80%;
+    object-fit: fill;
     height: 70%;
     flex: 1;
     object-fit: contain;
@@ -20,7 +26,8 @@
     text-align: center;
     word-wrap: break-word;
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 2.0rem;
+    margin-bottom: 0px;
     font-weight: bold;
   }
   

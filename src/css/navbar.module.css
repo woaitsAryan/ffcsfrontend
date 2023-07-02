@@ -1,4 +1,8 @@
 .navbar {
+    position: relative;
+    margin-top: 3%;
+    width: 80%;
+    border-radius: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;

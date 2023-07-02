@@ -16,6 +16,7 @@ const Hero = () => {
 
 return (
   <div className={styles.mainContainer}>
+    <Navbar></Navbar>
       <div className={styles.heroContainer}>
         <div className={styles.heroContainerInfo}>
           <h1>FFCS</h1>

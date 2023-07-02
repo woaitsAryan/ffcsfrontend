@@ -15,10 +15,17 @@ const Landing = () => {
     <ButtonProvider>
       <Hero />
     </ButtonProvider>
-    <p className={Styles['course-type']}>Course Type</p>
-    <div className={Styles['courseTypeContainer']}>
+    <p className={Styles.title}>Course Type</p>
+    <div className={`${Styles.courseTypeContainer} ${Styles.snapsInline}`}>
     <CourseType name='Discipline Core' imagePath='Flask Icon.svg'></CourseType>
     <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    <CourseType name=' Open Elective' imagePath='Gear Icon.svg'></CourseType>
+    
+   
     </div>
     </div>
   );
