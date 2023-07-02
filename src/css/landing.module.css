@@ -2,7 +2,16 @@
     overflow-y: scroll;
     overflow-x: hidden;
 } */
+body::-webkit-scrollbar{
+    display: none;
+  }
+.courseTypeContainer::-webkit-scrollbar{
+    display: none;
+}
 .courseTypeContainer{
+    scrollbar-width: none;   
+    grid-auto-flow: dense;
+    gap: 1rem;
     position: relative;
     left: 3%;
     scroll-snap-align: start;
@@ -11,8 +20,9 @@
     display: grid;
     /* gap: 1rem; */
     overflow-x: auto;
+    scroll-behavior: smooth;
     grid-auto-flow: column;
-    grid-auto-columns:25% ;
+    grid-auto-columns:20% ;
 }
 .title {  
     margin-top: 1rem;

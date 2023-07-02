@@ -34,7 +34,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={styles.navbar}>
+      <div className={styles.logoContainer}>
       <div className={styles.heading}>FFCS Planner</div>
+      <img src='ffcsLogo.svg'></img>
+      </div>
       <ul className={styles.navLinks}>
         <li className={styles.navItem} onClick={handleLogin}>
           Login

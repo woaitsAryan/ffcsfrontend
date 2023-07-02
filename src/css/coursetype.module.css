@@ -1,6 +1,7 @@
 .container {
     
     min-width: 5%;
+    max-height: fit-content;
     display: flex;
     scroll-snap-align: start;
     flex-direction: column;
@@ -15,17 +16,21 @@
   
   
   .image {
-    inline-size: 80%;
-    object-fit: fill;
+    margin-top: 1.5%;
+    max-width: 80%;
+    object-fit:cover;
     height: 70%;
     flex: 1;
     object-fit: contain;
   }
   
   .title {
+    max-height:fit-content ;
+    overflow-wrap: break-word;
+    word-break: break-all;
     text-align: center;
     word-wrap: break-word;
-    margin-top: 1rem;
+    margin-top: 0rem;
     font-size: 2.0rem;
     margin-bottom: 0px;
     font-weight: bold;

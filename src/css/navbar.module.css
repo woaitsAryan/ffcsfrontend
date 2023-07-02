@@ -1,7 +1,7 @@
 .navbar {
     position: relative;
     margin-top: 3%;
-    width: 80%;
+    width: 85%;
     border-radius: 30px;
     display: flex;
     justify-content: space-between;
@@ -10,9 +10,15 @@
     background-color: #f2f2f2;
     transition: all 0.3s ease;
 }
-  
+.logoContainer{
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 .heading {
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
   
