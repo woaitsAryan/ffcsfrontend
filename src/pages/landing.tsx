@@ -6,6 +6,8 @@ import { ButtonProvider } from '../buttonContext';
 import Styles from '../css/landing.module.css'
 import CourseType from '../components/CourseType';
 import Slots from '../components/Slots';
+import Timetable from '../components/Timetable';
+
 
 
 const Landing = () => {
@@ -41,6 +43,8 @@ const Landing = () => {
     <Slots></Slots>
     <Slots></Slots>  
     </div>
+    <p className={Styles.title}>Timetable</p>
+    <Timetable></Timetable>
     </div>
   );
 };
