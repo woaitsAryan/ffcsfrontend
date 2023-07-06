@@ -46,7 +46,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div ref={stepRef}>
         {step === 1 && (
           <div className={styles.container} ref={animationEl}  >

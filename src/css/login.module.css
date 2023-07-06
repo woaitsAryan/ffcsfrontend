@@ -2,12 +2,14 @@ body{
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
 
 }
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .container{
-    position: absolute;
     /* width: 900px; */
-    top: 25%;
-    left: 35%;
     /* background: #007AFF; */
     /* right:35%; */
     display: inline-flex;
@@ -44,7 +46,7 @@ body{
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
-    background: #007AFF;
+    background: #BF5AF2;
     color: #FFF;
     border: none;
 }

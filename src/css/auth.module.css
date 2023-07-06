@@ -66,7 +66,7 @@ body{
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
-    background: #007AFF;
+    background: #BF5AF2;
     color: #FFF;
     border: none;
     
@@ -76,7 +76,7 @@ body{
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
-    background: #007AFF;
+    background: #BF5AF2;
     color: #FFF;
     border: none;
 }
@@ -100,7 +100,7 @@ body{
   }
   
   .custom-checkbox:checked {
-    background-color: #007AFF;
+    background-color: #BF5AF2;
   }
   
   .custom-checkbox::before {
