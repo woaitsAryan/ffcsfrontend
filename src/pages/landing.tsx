@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import { ButtonProvider } from '../buttonContext';
 import Styles from '../css/landing.module.css'
 import CourseType from '../components/CourseType';
+import Slots from '../components/Slots';
 
 
 const Landing = () => {
@@ -30,6 +31,15 @@ const Landing = () => {
     <CourseType name='Non Graded Core Requirement' imagePath='Guitar Icon.svg'></CourseType>
     <CourseType name='Projects and Internship' imagePath='Shopping Basket.svg'></CourseType>
     </div>
+    </div>
+    <p className={Styles.title}>Course Slots</p>
+    <div className={Styles.slotsContainer}>
+    <Slots></Slots>
+    <Slots></Slots>
+    <Slots></Slots>
+    <Slots></Slots>
+    <Slots></Slots>
+    <Slots></Slots>  
     </div>
     </div>
   );
