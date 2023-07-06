@@ -1,11 +1,56 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from '../css/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
+interface VerifyResponse {
+  error: string;
+  verified: boolean;
+}
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
-  const [isSticky, setIsSticky] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkToken = async () => {
+      try {
+        const isVerified = await checkLogin();
+        setIsLoggedIn(isVerified);
+      } catch (error) {
+        console.error('Verification request failed:', error);
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkToken();
+  }, []);
+  
+  const checkLogin = async (): Promise<boolean> => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const response = await axios.post('http://127.0.0.1:3000/verify', null, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        const verifyResponse: VerifyResponse = response.data;
+        return verifyResponse.verified === true;
+      } catch (error) {
+        console.error('Verification request failed:', error);
+        return false;
+      }
+    } else {
+      return false;
+    }
+  };
+
+  const removeTokenFromLocalStorage = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/');
+  };
 
   const handleLogin = () => {
     setTimeout(() => {
@@ -19,19 +64,6 @@ const Navbar: React.FC = () => {
     }, 0); // duration must be 0
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsSticky(scrollTop > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
@@ -39,12 +71,21 @@ const Navbar: React.FC = () => {
       <img src='ffcsLogo.svg'></img>
       </div>
       <ul className={styles.navLinks}>
-        <li className={styles.navItem} onClick={handleLogin}>
-          Login
-        </li>
-        <li className={styles.navItem} onClick={handleRegister}>
-          Sign Up
-        </li>
+        {!isLoggedIn && (
+            <>
+              <li className={styles.navItem} onClick={handleLogin}>
+                Login
+              </li>
+              <li className={styles.navItem} onClick={handleRegister}>
+                Sign Up
+              </li>
+            </>
+          )}
+          {isLoggedIn && (
+            <li className={styles.navItem} onClick={removeTokenFromLocalStorage}>
+              Sign Out
+            </li>
+          )}
       </ul>
     </nav>
   );
