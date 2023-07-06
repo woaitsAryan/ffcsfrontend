@@ -2,6 +2,8 @@ import React, { useState, useRef,useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../css/login.module.css'
+import axios from 'axios';
+
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +32,16 @@ const LoginForm = () => {
       gsap.fromTo(stepRef.current, { y: animationheight.from}, { y: animationheight.to,duration: 1.5,ease: "expo.out",onStart: () => setStep(2) });
       // console.log(stepRef.current)
     } else if (step === 2) {
-      // send username, password to backend
+      const payload = {username: username, password: password};
+      axios.post('http://127.0.0.1:3000/login', payload)
+        .then((response) => {
+          const {token} = response.data;
+          localStorage.setItem('token', token);
+          navigate('/')
+        })
+        .catch((error) => {
+          console.error('Login request failed:', error);
+        });
       // navigate("/auth");
     }
   };
