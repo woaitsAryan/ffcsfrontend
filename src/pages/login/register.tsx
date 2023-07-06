@@ -2,7 +2,8 @@ import React, { useState, useRef,useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../css/login.module.css'
-import axios from 'axios';
+import postHandler from '../../handlers/postHandler';
+import Cookies from 'js-cookie';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
@@ -33,16 +34,13 @@ const LoginForm = () => {
       // console.log(stepRef.current)
     } else if (step === 2) {
       const payload={username: username, password: password};
-      axios.post('http://127.0.0.1:3000/register', payload)
-        .then((response) => {
-          const {token} = response.data;
-          localStorage.setItem('token', token);
-          navigate('/')
-        })
-        .catch((error) => {
-          console.error('Register request failed:', error);
-        });
-      navigate("/");
+      postHandler('http://127.0.0.1:3000/register',payload, false, "token")
+      .then((response) => {
+        const {token} = response.data;
+        localStorage.setItem('token', token);
+        Cookies.set('token',token, { expires: 30 });
+        navigate('/');
+      })
     }
   };
   return (
