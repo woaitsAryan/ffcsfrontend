@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const postHandler = async (URL: string, formData: object, protect: boolean, parameter:string,  type: string = 'application/json') => {
+const postHandler = async (URL: string, formData: object, protect: boolean,  type: string = 'application/json') => {
   const headers = {
     'Content-Type': type,
     Authorization: '',
@@ -12,12 +12,11 @@ const postHandler = async (URL: string, formData: object, protect: boolean, para
     data: {},
     statusCode: 500,
   };
-
   await axios
     .post(URL, formData, { headers })
     .then(res => {
       response.status = 1;
-      response.data = `res.${parameter}`;
+      response.data = res.data;
       response.statusCode = res.status;
     })
     .catch(err => {

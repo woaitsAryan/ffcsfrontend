@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import styles from '../css/navbar.module.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import {AxiosResponse} from 'axios';
+import Cookies from 'js-cookie';
+import postHandler from '../handlers/postHandler';
 
 interface VerifyResponse {
   error: string;
@@ -26,28 +28,21 @@ const Navbar: React.FC = () => {
     checkToken();
   }, []);
   
-  const checkLogin = async (): Promise<boolean> => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const response = await axios.post('http://127.0.0.1:3000/verify', null, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        const verifyResponse: VerifyResponse = response.data;
-        return verifyResponse.verified === true;
-      } catch (error) {
-        console.error('Verification request failed:', error);
-        return false;
-      }
+  const checkLogin = (): Promise<boolean> => {
+    const token = Cookies.get('token');
+    if (token != undefined) {
+      return postHandler('http://127.0.0.1:3000/verify',{}, true)
+      .then((response: AxiosResponse<{verified:boolean}>) => {
+        const {verified} = response.data;
+        return verified;
+      })
     } else {
-      return false;
+      return Promise.resolve(false);
     }
   };
 
   const removeTokenFromLocalStorage = () => {
-    localStorage.removeItem('token');
+    Cookies.remove('token');
     setIsLoggedIn(false);
     navigate('/');
   };

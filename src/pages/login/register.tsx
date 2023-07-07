@@ -34,10 +34,10 @@ const LoginForm = () => {
       // console.log(stepRef.current)
     } else if (step === 2) {
       const payload={username: username, password: password};
-      postHandler('http://127.0.0.1:3000/register',payload, false, "token")
+      console.log(payload)
+      postHandler('http://127.0.0.1:3000/register',payload, false)
       .then((response) => {
         const {token} = response.data;
-        localStorage.setItem('token', token);
         Cookies.set('token',token, { expires: 30 });
         navigate('/');
       })
