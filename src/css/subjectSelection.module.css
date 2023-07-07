@@ -1,0 +1,32 @@
+.SubjectSelection {
+  border-spacing: 0.6rem 0.3rem;
+  font-size: 1.2rem;
+  /* display: table; */
+  justify-content: center;
+  align-items: center;
+}
+.tableHeadings {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-weight: 700;
+  color: black;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.tableData {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-weight: 400;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.SubjectSelectionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
