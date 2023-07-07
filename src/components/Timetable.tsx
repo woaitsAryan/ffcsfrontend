@@ -1,8 +1,32 @@
-import React from 'react';
-import data from './data.json';
+import React, {useEffect, useState} from 'react';
+import defaultdata from './data.json';
 import styles from '../css/timetable.module.css'
-let rowspan=5;
+import postHandler from '../handlers/postHandler';
+import Cookies from 'js-cookie';
+
 const Timetable: React.FC = () => {
+  const [data, setData] = useState(defaultdata);
+
+  useEffect(() => {
+    const fetchTimetable = async () => {
+      const token = Cookies.get('token');
+      if (token) {
+        try {
+          const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
+          const { timetable } = response.data;
+          console.log(response)
+          if(timetable.length != 0){
+            setData(timetable[0]);
+          }
+        } catch (error) {
+          console.error('Error fetching timetable:', error);
+        }
+      }
+    };
+
+    fetchTimetable();
+  }, []);
+
   return (
     <div className={styles.timetableContainer}>
     <table className={styles.timetable}>
