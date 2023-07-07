@@ -7,8 +7,7 @@ import Styles from '../css/landing.module.css'
 import CourseType from '../components/CourseType';
 import Slots from '../components/Slots';
 import Timetable from '../components/Timetable';
-
-
+import Footer from '../components/Footer';
 
 const Landing = () => {
  
@@ -45,6 +44,7 @@ const Landing = () => {
     </div>
     <p className={Styles.title}>Timetable</p>
     <Timetable></Timetable>
+    <Footer></Footer>
     </div>
   );
 };
