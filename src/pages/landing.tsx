@@ -61,7 +61,13 @@ const Landing = () => {
         <Slots></Slots>
         <Slots></Slots>
       </div>
+      <div className={Styles.inputCourseNameContainer}>
       <p className={Styles.title}>Subject Selection</p>
+      <div className={Styles.inputContainer}>
+      <input type='search' placeholder="Enter course name" className={Styles.inputCourseName}></input>
+      <img src='./search.svg' className={Styles.searchIcon}></img>
+      </div>
+      </div>
       <SubjectSelection></SubjectSelection>
       <p className={Styles.title}>Timetable</p>
       <Timetable></Timetable>

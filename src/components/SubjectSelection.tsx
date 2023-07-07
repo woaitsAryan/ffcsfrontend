@@ -21,7 +21,7 @@ const SubjectSelection: React.FC = () => {
         </thead>
         <tbody>
           <tr>
-            <td className={styles.tableData}>[ ]</td>
+            <td className={styles.tableData}><input type='checkbox'></input></td>
             <td className={styles.tableData}>1</td>
             <td className={styles.tableData}>BEEE102L</td>
             <td className={styles.tableData}>
@@ -35,7 +35,7 @@ const SubjectSelection: React.FC = () => {
             <td className={styles.tableData}>3.0</td>
           </tr>
           <tr>
-            <td className={styles.tableData}>[ ]</td>
+            <td className={styles.tableData}><input type='checkbox'></input></td>
             <td className={styles.tableData}>2</td>
             <td className={styles.tableData}>BCSE101E</td>
             <td className={styles.tableData}>Computer Programming: Python</td>
@@ -47,7 +47,7 @@ const SubjectSelection: React.FC = () => {
             <td className={styles.tableData}>3.0</td>
           </tr>
           <tr>
-            <td className={styles.tableData}>[ ]</td>
+            <td className={styles.tableData}><input type='checkbox'></input></td>
             <td className={styles.tableData}>3</td>
             <td className={styles.tableData}>BCSE103E</td>
             <td className={styles.tableData}>Computer Programming: Java</td>
@@ -59,7 +59,7 @@ const SubjectSelection: React.FC = () => {
             <td className={styles.tableData}>3.0</td>
           </tr>
           <tr>
-            <td className={styles.tableData}>[ ]</td>
+            <td className={styles.tableData}><input type='checkbox'></input></td>
             <td className={styles.tableData}>4</td>
             <td className={styles.tableData}>BHUM103L</td>
             <td className={styles.tableData}>Micro Economics</td>
@@ -71,7 +71,7 @@ const SubjectSelection: React.FC = () => {
             <td className={styles.tableData}>3.0</td>
           </tr>
           <tr>
-            <td className={styles.tableData}>[ ]</td>
+            <td className={styles.tableData}><input type='checkbox'></input></td>
             <td className={styles.tableData}>5</td>
             <td className={styles.tableData}>BEEE102L</td>
             <td className={styles.tableData}>Urban Community Development</td>
