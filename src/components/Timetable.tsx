@@ -28,6 +28,7 @@ const Timetable: React.FC = () => {
   }, []);
 
   return (
+    <div className={styles.mainContainer}>
     <div className={styles.timetableContainer}>
     <table className={styles.timetable}>
       <thead className={styles.head}>
@@ -85,6 +86,7 @@ const Timetable: React.FC = () => {
       }
       </tbody>
     </table>
+    </div>
     </div>
   );
 };

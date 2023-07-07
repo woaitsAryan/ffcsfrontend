@@ -92,7 +92,16 @@ const Landing = () => {
       </div>
       </div>
       <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange}></SubjectSelection>
+      <div className={Styles.ttBtnContainer}>
       <p className={Styles.title}>Timetable</p>
+      <div className={Styles.btnContainer}>
+      <button className={Styles.exportBtn}>Export</button>
+      <button className={Styles.Btn}>Share</button>
+      <button className={Styles.Btn}>Add</button>
+      <button className={Styles.Btn}>Load</button>
+      <button className={Styles.Btn}>Reset</button>
+      </div>
+      </div>
       <Timetable></Timetable>
       <Footer></Footer> 
     </div>
