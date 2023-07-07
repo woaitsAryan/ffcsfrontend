@@ -1,10 +1,11 @@
-body{
+@media (min-width: 421px) {
+  body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
-}
-.invis{
+  }
+  .invis {
     display: none;
-}
-.container{
+  }
+  .container {
     position: absolute;
     /* width: 900px; */
     top: 25%;
@@ -12,81 +13,76 @@ body{
     /* right:35%; */
     display: inline-flex;
     transition: opacity 0.5s;
-
-}
-.fade-out {
+  }
+  .fade-out {
     opacity: 0;
     pointer-events: none; /* Disable interactions on faded-out form */
   }
-.btn-container{
+  .btn-container {
     margin-top: 2%;
     position: relative;
     left: 5%;
     display: flex;
     flex-direction: column;
     max-width: 70%;
-}
-.step{
-    margin:0px;
+  }
+  .step {
+    margin: 0px;
     font-size: 1.5rem;
-}
-.step-number{
+  }
+  .step-number {
     display: inline;
     opacity: 45%;
-}
-/* p{
-    font-size: 1.5rem;
-    margin: 0px;
-    font-weight: 400;
-    opacity: 100%;
-} */
-.waving-emoji{
+  }
+  /* p{
+          font-size: 1.5rem;
+          margin: 0px;
+          font-weight: 400;
+          opacity: 100%;
+      } */
+  .waving-emoji {
     padding-left: 0.4rem;
     height: 3rem;
     width: 3rem;
-}
-.header{
+  }
+  .header {
     font-size: 3.5rem;
     margin: 0px;
-}
-.newline{
+  }
+  .newline {
     font-size: 3.5rem;
     margin: 0px;
-}
-.middle-txt{
-
+  }
+  .middle-txt {
     max-width: 80%;
     font-size: 2rem;
     margin: 0px;
     font-weight: 400;
     opacity: 75%;
-}
-.btn-signUp{
+  }
+  .btn-signUp {
     height: 30px;
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
-    background: #BF5AF2;
-    color: #FFF;
+    background: #bf5af2;
+    color: #fff;
     border: none;
-    
-}
-.btn-login{
+  }
+  .btn-login {
     height: 30px;
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
-    background: #BF5AF2;
-    color: #FFF;
+    background: #bf5af2;
+    color: #fff;
     border: none;
-}
-.TnC-container{
-
+  }
+  .TnC-container {
     display: flex;
     margin-top: 10px;
-    
-}
-.custom-checkbox {
+  }
+  .custom-checkbox {
     position: relative;
     appearance: none;
     -webkit-appearance: none;
@@ -98,13 +94,13 @@ body{
     margin-right: px;
     cursor: pointer;
   }
-  
+
   .custom-checkbox:checked {
-    background-color: #BF5AF2;
+    background-color: #bf5af2;
   }
-  
+
   .custom-checkbox::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -117,13 +113,140 @@ body{
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
-  
+
   .custom-checkbox:checked::before {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(45deg);
   }
-  
+
   .custom-checkbox:focus {
     box-shadow: 0 0 2px 2px rgba(0, 0, 255, 0.5);
   }
-  
+}
+
+@media (max-width: 420px) {
+  body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont;
+  }
+  .invis {
+    display: none;
+  }
+  .container {
+    margin: 9%;
+    margin-top: 20%;
+    display: inline-flex;
+    flex-direction: column;
+    transition: opacity 0.5s;
+  }
+  .fade-out {
+    opacity: 0;
+    pointer-events: none; /* Disable interactions on faded-out form */
+  }
+  .btn-container {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+  }
+  .step {
+    margin: 0px;
+    font-size: 1.5rem;
+  }
+  .step-number {
+    display: inline;
+    opacity: 45%;
+  }
+  /* p{
+        font-size: 1.5rem;
+        margin: 0px;
+        font-weight: 400;
+        opacity: 100%;
+    } */
+  .waving-emoji {
+    padding-left: 0.4rem;
+    height: 3rem;
+    width: 3rem;
+  }
+  .header {
+    font-size: 3.5rem;
+    margin: 0px;
+  }
+  .newline {
+    font-size: 3.5rem;
+    margin: 0px;
+  }
+  .middle-txt {
+    max-width: 80%;
+    font-size: 2rem;
+    margin: 0px;
+    font-weight: 400;
+    opacity: 75%;
+  }
+  .btn-signUp {
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    align-self: center;
+    margin-top: 5%;
+    font-weight: 600;
+    background: #bf5af2;
+    color: #fff;
+    border: none;
+  }
+  .btn-login {
+    height: 30px;
+    width: 80%;
+    border-radius: 10px;
+    align-self: center;
+    margin-top: 5%;
+    font-weight: 600;
+    background: #bf5af2;
+    color: #fff;
+    border: none;
+  }
+  .TnC-container {
+    font: 0.8rem sans-serif;
+    align-items: center;
+    display: flex;
+    margin-top: 10px;
+  }
+  .custom-checkbox {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    outline: none;
+    margin-right: px;
+    cursor: pointer;
+  }
+
+  .custom-checkbox:checked {
+    background-color: #bf5af2;
+  }
+
+  .custom-checkbox::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 10px;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    border-color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .custom-checkbox:checked::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .custom-checkbox:focus {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 255, 0.5);
+  }
+}
