@@ -25,6 +25,7 @@ const getHandler = async (URL: string, protect: boolean) => {
       response.status = 0;
       response.data = err.response.data;
       response.statusCode = 500;
+      return response;
     });
   return response;
 };

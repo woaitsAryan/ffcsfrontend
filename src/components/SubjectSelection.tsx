@@ -1,7 +1,54 @@
 import React, { useEffect, useState } from "react";
 import styles from "../css/subjectSelection.module.css";
+import axios from "axios";
+import getHandler from "../handlers/getHandler";
 
-const SubjectSelection: React.FC = () => {
+interface Subject {
+  code: string;
+  name: string;
+  credits: number;
+  slots: {
+    theoryslot: string;
+    faculty: string;
+    venue: string;
+    labslot: string;
+  }[];
+}
+
+interface Slot {
+  theoryslot: string;
+  faculty: string;
+  venue: string;
+  labslot: string;
+}
+
+interface SubjectSelectionProps {
+  selectedCourseType: string;
+  onCheckboxChange: (slot: Slot[]) => void;
+}
+
+const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange}) => {
+
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+
+  useEffect(() => {
+    const fetchSubjects = async () => {
+      try {
+        const url = `http://127.0.0.1:3000/courses/${selectedCourseType}`;
+        const response = await getHandler(url, false);
+        setSubjects(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSubjects();
+  }, [selectedCourseType]);
+
+  const handleCheckboxClick = (slots: Slot[]) => {
+    onCheckboxChange(slots); 
+  };
+
   return (
     <div className={styles.SubjectSelectionContainer}>
       <table className={styles.SubjectSelection}>
@@ -20,68 +67,22 @@ const SubjectSelection: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className={styles.tableData}><input type='checkbox'></input></td>
-            <td className={styles.tableData}>1</td>
-            <td className={styles.tableData}>BEEE102L</td>
+          {subjects.map((subject,index) => (
+            <tr key={subject.code}>
             <td className={styles.tableData}>
-              Basic Electrical and Electronics...
+              <input type="checkbox" onClick={() => handleCheckboxClick(subject.slots)}/>
             </td>
+            <td className={styles.tableData}>{index + 1}</td>
+            <td className={styles.tableData}>{subject.code}</td>
+            <td className={styles.tableData}>{subject.name}</td>
             <td className={styles.tableData}>1.0</td>
             <td className={styles.tableData}>3.0</td>
             <td className={styles.tableData}>0.0</td>
             <td className={styles.tableData}>0.0</td>
             <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>3.0</td>
+            <td className={styles.tableData}>{subject.credits}</td>
           </tr>
-          <tr>
-            <td className={styles.tableData}><input type='checkbox'></input></td>
-            <td className={styles.tableData}>2</td>
-            <td className={styles.tableData}>BCSE101E</td>
-            <td className={styles.tableData}>Computer Programming: Python</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>4.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>3.0</td>
-          </tr>
-          <tr>
-            <td className={styles.tableData}><input type='checkbox'></input></td>
-            <td className={styles.tableData}>3</td>
-            <td className={styles.tableData}>BCSE103E</td>
-            <td className={styles.tableData}>Computer Programming: Java</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>4.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>3.0</td>
-          </tr>
-          <tr>
-            <td className={styles.tableData}><input type='checkbox'></input></td>
-            <td className={styles.tableData}>4</td>
-            <td className={styles.tableData}>BHUM103L</td>
-            <td className={styles.tableData}>Micro Economics</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>3.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>3.0</td>
-          </tr>
-          <tr>
-            <td className={styles.tableData}><input type='checkbox'></input></td>
-            <td className={styles.tableData}>5</td>
-            <td className={styles.tableData}>BEEE102L</td>
-            <td className={styles.tableData}>Urban Community Development</td>
-            <td className={styles.tableData}>1.0</td>
-            <td className={styles.tableData}>3.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>0.0</td>
-            <td className={styles.tableData}>3.0</td>
-          </tr>
+          ))}
         </tbody>
       </table>
     </div>

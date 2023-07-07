@@ -45,6 +45,7 @@ const Navbar: React.FC = () => {
     Cookies.remove('token');
     setIsLoggedIn(false);
     navigate('/');
+    window.location.reload();
   };
 
   const handleLogin = () => {
