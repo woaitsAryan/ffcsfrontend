@@ -54,17 +54,15 @@
   body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
   }
+
   .mainContainer {
+    align-self: flex-start;
     margin: 1%;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .container {
-    /* width: 900px; */
-    /* background: #007AFF; */
-    /* right:35%; */
     display: inline-flex;
     flex-direction: column;
   }
@@ -82,7 +80,7 @@
     opacity: 45%;
   }
   .username-txt {
-    font-size: 2.7rem;
+    font-size: 2.4rem;
     margin-bottom: 40px;
   }
   .username-field {
@@ -96,7 +94,7 @@
     height: 30px;
     padding: 0px;
     align-self: center;
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     /* margin-top: 5%; */
     font-weight: 600;
