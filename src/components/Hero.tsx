@@ -22,8 +22,8 @@ return (
           <h1>FFCS</h1>
           <h1 className={styles.planner}>Planner</h1>
           <p className={styles.heroInfo}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua
+          We help you plan your next semester
+in VIT with an easy and flexible FFCS planner. 
           </p>
         </div>
         <img src="heroImg.svg" className={styles.heroImg} alt="Hero Image" />

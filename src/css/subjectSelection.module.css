@@ -1,10 +1,10 @@
 .SubjectSelection {
-  width: 100%;
+  width: 100vw;
   border-spacing: 0.6rem 0.3rem;
-  font-size: 1.2rem;
-  /* display: table; */
-  justify-content: center;
-  align-items: center;
+  font-size: 1.0rem;
+  display: table;
+  /* justify-content: center;
+  align-items: center; */
 }
 .tableHeadings {
   background-size: cover;
@@ -31,4 +31,42 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
+}
+@media (max-width:450px){
+  .SubjectSelection {
+    width: 100vw;
+    border-spacing: 0.6rem 0.3rem;
+    font-size: 1.0rem;
+    display: table;
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .tableHeadings {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: 700;
+    color: black;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .tableData {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .SubjectSelectionContainer {
+    overflow-x: scroll;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+  }
+  
 }

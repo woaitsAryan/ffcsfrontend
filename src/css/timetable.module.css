@@ -37,8 +37,31 @@ background-image: url('../../public/J slot.svg');
     text-align: center;
 }
 .timetableContainer{
+    width: fit-content;
     display:flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 100px;
+}
+ @media (max-width: 450px) {
+
+.timetableContainer{
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 100px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.timetable{border-spacing: 0.6rem 0.3rem;
+    font-size: 1.2rem;
+    display: table;
+    justify-content: center;
+    align-items: center;
+    scroll-padding-inline-start: 0;}
 }
