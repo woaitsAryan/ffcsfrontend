@@ -103,12 +103,6 @@ const Landing = () => {
           ></CourseType>
         </div>
       </div>
-      <p className={Styles.title}>Course Slots</p>
-      <div className={Styles.slotsContainer}>
-        {selectedSlots.map((slot, index) => (
-          <Slots slot={slot} />
-        ))}
-      </div>
       <div className={Styles.inputCourseNameContainer}>
       <p className={Styles.title}>Subject Selection</p>
       <div className={Styles.inputContainer}>
@@ -117,6 +111,12 @@ const Landing = () => {
       </div>
       </div>
       <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange}></SubjectSelection>
+      <p className={Styles.title}>Course Slots</p>
+      <div className={Styles.slotsContainer}>
+        {selectedSlots.map((slot, index) => (
+          <Slots slot={slot} />
+        ))}
+      </div>
       <div className={Styles.ttBtnContainer}>
       <p className={Styles.title}>Timetable</p>
       <div className={Styles.btnContainer}>

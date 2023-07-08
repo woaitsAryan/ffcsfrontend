@@ -36,20 +36,19 @@
 } */
 
 .courseTypeContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: min-content;
-    gap: 3rem;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-align: start;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    position: sticky;
-    left: 3%;
-    max-width: 93%;
-  }
-  
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.courseTypeContainer::-webkit-scrollbar {
+  display: none;
+}
+
   
   
   
@@ -97,7 +96,7 @@
     display: flex;
     /* justify-content: center; */
     align-items: center;
-    gap: 50%;
+    gap: 55%;
   }
   .exportBtn{
     height: fit-content;
