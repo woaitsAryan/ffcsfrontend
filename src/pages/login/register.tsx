@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../css/login.module.css";
 import postHandler from "../../handlers/postHandler";
 import Cookies from "js-cookie";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -53,13 +55,19 @@ const LoginForm = () => {
         (response) => {
           const { token } = response.data;
           Cookies.set("token", token, { expires: 30 });
-          navigate("/");
+          toast.success("good")
+          setTimeout(()=>{
+            navigate("/");
+          },500)
         }
-      );
+      ).catch((reject)=>{
+        toast.error('bad')
+      });;
     }
   };
   return (
     <div className={styles.mainContainer}>
+      <ToastContainer/>
       <div ref={stepRef}>
         {step === 1 && (
           <div className={styles.container} ref={animationEl}>

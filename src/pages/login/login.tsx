@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../css/login.module.css";
 import postHandler from "../../handlers/postHandler";
 import Cookies from "js-cookie";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -31,7 +33,8 @@ const LoginForm = () => {
       );
     }
   }, []);
-  const handleContinue = () => {
+
+  const handleContinue = async () => {
     if (step === 1) {
       gsap.fromTo(
         stepRef.current,
@@ -44,19 +47,24 @@ const LoginForm = () => {
         }
       );
     } else if (step === 2) {
-      const payload = { username: username, password: password };
-  
-      postHandler("http://127.0.0.1:3000/login", payload, false, "token").then(
-        //if returned with an error then user doesn't exist/ wrong credentials, show error message
-        (response) => {
-          const { token } = response.data;
-          localStorage.setItem("token", token);
-          Cookies.set("token", token, { expires: 30 });
-          navigate("/");
-        }
-      );
+      try {
+        const payload = { username: username, password: password };
+        const response = await postHandler("http://127.0.0.1:3000/login", payload, false, "token");
+        
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        Cookies.set("token", token, { expires: 30 });
+        toast.success('Good action')
+        setTimeout(()=>{        navigate("/");
+      },500)
+      } catch (error) {
+        toast.error('Bad action')
+        console.log("Login failed:", error);
+      }
     }
+    
   };
+
   return (
     <div className={styles.mainContainer}>
       <div ref={stepRef}>
@@ -98,6 +106,7 @@ const LoginForm = () => {
           </div>
         )}
       </div>
+      <ToastContainer/>
     </div>
   );
 };
