@@ -32,7 +32,7 @@ const Landing = () => {
 
   const handleShareClick = async () => {
     const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
-    const shareID = `ffcsplanner.com/timetable/${response.data.userID}/${Timetablenumber}`
+    const shareID = `http://localhost:3000//timetable/${response.data.userID}/${Timetablenumber}`
     await navigator.clipboard.writeText(shareID)
     //message to indicate url is copied in clipboard
     //if not logged in(will return with an error), message to indicate that you need to login to share

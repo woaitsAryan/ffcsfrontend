@@ -4,6 +4,7 @@ import Landing from './pages/landing';
 import Auth from './pages/login/auth'
 import Login from './pages/login/login'
 import Register from './pages/login/register'
+import Sharetimetable from './pages/Sharetimetable'
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
         <Route
           path = "/register"
           element = {<Register/>}
+        />
+        <Route
+          path = "/timetable/:id/:number"
+          element = {<Sharetimetable/>}
         />
       </Routes>
     </Router>
