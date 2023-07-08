@@ -4,8 +4,18 @@ import styles from '../css/timetable.module.css'
 import postHandler from '../handlers/postHandler';
 import Cookies from 'js-cookie';
 
-const Timetable: React.FC = () => {
-  const [data, setData] = useState(defaultdata);
+interface RowEntry {
+  day: string;
+  data: string[][];
+}
+
+interface TimetableProps {
+  propToWatch: any; 
+  timetableNum: number;
+}
+
+const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum}) => {
+  const [data, setData] = useState(localStorage.getItem('timetable') ? JSON.parse(localStorage.getItem('timetable') as string) : defaultdata);
 
   useEffect(() => {
     const fetchTimetable = async () => {
@@ -16,7 +26,7 @@ const Timetable: React.FC = () => {
           const { timetable } = response.data;
           console.log(response)
           if(timetable.length != 0){
-            setData(timetable[0]);
+            setData(timetable[timetableNum]);
           }
         } catch (error) {
           console.error('Error fetching timetable:', error);
@@ -25,7 +35,26 @@ const Timetable: React.FC = () => {
     };
 
     fetchTimetable();
-  }, []);
+  }, [timetableNum]);
+
+  useEffect(() => {
+    const handlePropChange = () => {
+      const currenttimetable = JSON.parse(localStorage.getItem('timetable') || 'null')
+      if(currenttimetable){
+        setData(currenttimetable);
+        const payload = {"timetable": currenttimetable, "num": timetableNum }
+        postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
+        .then((response) => {
+          //nice
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        console.log(currenttimetable)
+      }
+    };
+    handlePropChange(); 
+  }, [propToWatch]);
 
   return (
     // <div className={styles.mainContainer}>
@@ -67,7 +96,7 @@ const Timetable: React.FC = () => {
       </thead>
       <tbody>
       {
-        data.map((row, index:number) => (
+        data.map((row: RowEntry, index:number) => (
           <tr>
             <td>{row.day}</td>
             {row.data.map((value, index:number) => (

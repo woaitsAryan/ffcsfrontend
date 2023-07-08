@@ -10,11 +10,17 @@ interface Slot {
 
 interface SlotsProps {
   slot: Slot;
+  selectedSlot: Slot;
+  onSelect: (selectedSlot: Slot) => void;
 }
 //Remove course name and add lab slot css and venue css
-const Slots: React.FC<SlotsProps> = ({ slot }) => {
+const Slots: React.FC<SlotsProps> = ({ slot, onSelect, selectedSlot }) => {
+  const handleSelect = () => {
+    onSelect(slot); // Notify the parent component about the selection
+  };
   return (
     <div className={styles.mainContainer}>
+      <input type="radio" onChange={handleSelect} checked = {slot == selectedSlot}/>
       <div className={styles.slotName}>{slot.theoryslot}</div>
       <div className={styles.courseName}>{slot.faculty}</div>
       <div className={styles.professorName}>{slot.faculty}</div>

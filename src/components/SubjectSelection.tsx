@@ -25,9 +25,10 @@ interface Slot {
 interface SubjectSelectionProps {
   selectedCourseType: string;
   onCheckboxChange: (slot: Slot[]) => void;
+  onSubjectChange: (name: string) => void;
 }
 
-const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange}) => {
+const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange, onSubjectChange}) => {
 
   const [subjects, setSubjects] = useState<Subject[]>([]);
 
@@ -44,9 +45,12 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
 
     fetchSubjects();
   }, [selectedCourseType]);
-
-  const handleCheckboxClick = (slots: Slot[]) => {
-    onCheckboxChange(slots); 
+  const handleSubjectNameChange = (name:string) => {
+    onSubjectChange(name);
+  }
+  const handleCheckboxClick = (subject: Subject) => {
+    onCheckboxChange(subject.slots);
+    handleSubjectNameChange(subject.code); 
   };
 
   return (
@@ -72,7 +76,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
             (subjects.map((subject,index) => (
             <tr key={subject.code}>
             <td className={styles.tableData}>
-              <input type="checkbox" onClick={() => handleCheckboxClick(subject.slots)}/>
+              <input type="checkbox" onClick={() => handleCheckboxClick(subject)}/>
             </td>
             <td className={styles.tableData}>{index + 1}</td>
             <td className={styles.tableData}>{subject.code}</td>

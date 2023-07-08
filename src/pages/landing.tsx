@@ -9,6 +9,100 @@ import Timetable from "../components/Timetable";
 import Footer from "../components/Footer";
 import SubjectSelection from "../components/SubjectSelection";
 import postHandler from "../handlers/postHandler";
+import removeData from "../handlers/removeData";
+import addData from "../handlers/addData";
+
+let scheduleData = [
+  {   "day": "Monday",
+      "data": [
+          ["A1/L1",""],
+          ["F1/L2", ""],
+          ["D1/L3", ""],
+          ["TB1/L4", ""],
+          ["TG1/L5", ""],
+          ["L6", ""],
+          ["",""],
+          ["A2/L31",""],
+          ["F2/L32", ""],
+          ["D2/L33", ""],
+          ["TB2/L34", ""],
+          ["TG2/L35", ""],
+          ["L36", ""]
+      ]
+  },
+  {
+      "day": "Tuesday",
+      "data":[
+          ["B1/L7", ""],
+          ["G1/L8",""],
+          ["E1/L9",""],
+          ["TC1/L10",""],
+          ["TAA1/L11",""],
+          ["L12",""],
+          ["",""],
+          ["B2/L37",""],
+          ["G2/L38",""],
+          ["E2/L39",""],
+          ["TC2/L40",""],
+          ["TAA2/L41",""],
+          ["L42",""]
+      ]
+  },
+  {
+      "day":"Wednesday",
+      "data":[
+          ["C1/L13",""],
+          ["A1/L14",""],
+          ["F1/L15",""],
+          ["V1/L16",""],
+          ["V2/L17",""],
+          ["L18",""],
+          ["",""],
+          ["C2/L43",""],
+          ["A2/L44",""],
+          ["F2/L45",""],
+          ["TD2/L46",""],
+          ["TBB2/L47",""],
+          ["L48",""]
+      ]
+  },
+  {
+      "day": "Thursday",
+      "data":[
+          ["D1/L19",""],
+          ["B1/L20",""],
+          ["G1/L21",""],
+          ["TE1/L22",""],
+          ["TCC1/L23",""],
+          ["L24",""],
+          ["",""],
+          ["D2/L49",""],
+          ["B2/L50",""],
+          ["G2/L51",""],
+          ["TE2/L52",""],
+          ["TCC2/L53",""],
+          ["L54",""]
+      ]
+  },
+  {
+      "day":"Friday",
+      "data":[
+          ["E1/L25",""],
+          ["C1/L26",""],
+          ["TA1/L27",""],
+          ["TF1/L28",""],
+          ["TD1/L29",""],
+          ["L30",""],
+          ["",""],
+          ["E2/L55",""],
+          ["C2/L56",""],
+          ["TA2/L57",""],
+          ["TF2/L58",""],
+          ["TDD2/L59",""],
+          ["L60",""]
+      ]
+  }   
+]
 
 interface Slot {
   theoryslot: string;
@@ -29,7 +123,12 @@ const Landing = () => {
   const [selectedCourseType, setSelectedCourseType] = useState("foundationcore");
   const [selectedSlots, setSelectedSlots] = useState<Slot[]>([]);
   const [Timetablenumber, setTimetablenumber] = useState<number>(0);
+  const [selectedTimetableSlot, setSelectedTimetableSlot] = useState<Slot>({theoryslot: "", faculty: "", venue: ""});
+  const [subjectName, setSubjectName] = useState<string>("");
 
+  const handleSubjectNameChange = (name:string) => {
+    setSubjectName(name);
+  }
   const handleCourseTypeClick = (name:string) => {
     setSelectedCourseType(name);
   };
@@ -38,12 +137,25 @@ const Landing = () => {
     setSelectedSlots(slots);
   };
 
+  const handleSlotSelect = async (slot: Slot)  => {
+    scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.theoryslot);
+    scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.labslot?selectedTimetableSlot.labslot:"nuffin");
+    scheduleData = addData(scheduleData,subjectName,slot.theoryslot);
+    scheduleData = addData(scheduleData,subjectName,slot.labslot?slot.labslot:"nuffin");
+    localStorage.setItem("timetable", JSON.stringify(scheduleData));
+    setSelectedTimetableSlot(slot);
+  };
+
   const handleShareClick = async () => {
     const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
-    const shareID = `http://localhost:3000//timetable/${response.data.userID}/${Timetablenumber}`
+    const shareID = `http://localhost:3000/timetable/${response.data.userID}/${Timetablenumber}`
     await navigator.clipboard.writeText(shareID)
     //message to indicate url is copied in clipboard
     //if not logged in(will return with an error), message to indicate that you need to login to share
+  }
+
+  const handleOptionClick = async (num:number) => {
+    setTimetablenumber(num);
   }
 
   const handleResetClick = async() => {
@@ -110,11 +222,11 @@ const Landing = () => {
       <img src='./search.svg' className={Styles.searchIcon}></img>
       </div>
       </div>
-      <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange}></SubjectSelection>
+      <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange} onSubjectChange={handleSubjectNameChange}></SubjectSelection>
       <p className={Styles.title}>Course Slots</p>
       <div className={Styles.slotsContainer}>
         {selectedSlots.map((slot, index) => (
-          <Slots slot={slot} />
+          <Slots key = {index} onSelect = {handleSlotSelect} slot={slot} selectedSlot = {selectedTimetableSlot}/>
         ))}
       </div>
       <div className={Styles.ttBtnContainer}>
@@ -140,13 +252,13 @@ const Landing = () => {
         <h2 className={Styles.timetableNumber}>Timetable name</h2>
         {dropdownVisible && (
           <div className={`${Styles.dropdownContent} ${Styles.open}`}>
-            <p>Option 1</p>
-            <p>Option 2</p>
-            <p>Option 3</p>
+            <button onClick={() => handleOptionClick(0)}>Option 1</button>
+            <button onClick={() => handleOptionClick(1)}>Option 2</button>
+            <button onClick={() => handleOptionClick(2)}>Option 3</button>
           </div>
         )}
       </div>
-      <Timetable ></Timetable>
+      <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber}></Timetable>
       </div>
       <Footer></Footer> 
     </div>
