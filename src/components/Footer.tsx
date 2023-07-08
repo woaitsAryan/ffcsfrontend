@@ -9,14 +9,15 @@ return (
   <div className={styles.mainContainer}>
        <div className={styles.aboutFfcsContainer}>
    <h1>About FFCS</h1>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+   <p>We help you plan your next semester
+in VIT with an easy and flexible FFCS planner. </p>
     </div>
    <div className={styles.aboutCsiContainer}>
    <h1>About CSI</h1>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
    </div>
   </div>
-  <p>Made with Love by CSI</p>
+  <p>Made with ❤️ by CSI</p>
   </div>
 );
 };
