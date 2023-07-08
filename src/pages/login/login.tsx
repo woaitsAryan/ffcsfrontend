@@ -43,10 +43,11 @@ const LoginForm = () => {
           onStart: () => setStep(2),
         }
       );
-      // console.log(stepRef.current)
     } else if (step === 2) {
       const payload = { username: username, password: password };
+  
       postHandler("http://127.0.0.1:3000/login", payload, false, "token").then(
+        //if returned with an error then user doesn't exist/ wrong credentials, show error message
         (response) => {
           const { token } = response.data;
           localStorage.setItem("token", token);

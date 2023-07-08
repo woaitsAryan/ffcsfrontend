@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { useNavigate } from "react-router-dom";
 // import Navbar from '../components/Navbar';
 import Hero from "../components/Hero";
 import { ButtonProvider } from "../buttonContext";
@@ -9,6 +8,7 @@ import Slots from "../components/Slots";
 import Timetable from "../components/Timetable";
 import Footer from "../components/Footer";
 import SubjectSelection from "../components/SubjectSelection";
+import postHandler from "../handlers/postHandler";
 
 interface Slot {
   theoryslot: string;
@@ -20,6 +20,7 @@ interface Slot {
 const Landing = () => { 
   const [selectedCourseType, setSelectedCourseType] = useState("foundationcore");
   const [selectedSlots, setSelectedSlots] = useState<Slot[]>([]);
+  const [Timetablenumber, setTimetablenumber] = useState<number>(0);
 
   const handleCourseTypeClick = (name:string) => {
     setSelectedCourseType(name);
@@ -28,6 +29,22 @@ const Landing = () => {
   const handleCheckboxChange = (slots: Slot[]) => {
     setSelectedSlots(slots);
   };
+
+  const handleShareClick = async () => {
+    const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
+    const shareID = `ffcsplanner.com/timetable/${response.data.userID}/${Timetablenumber}`
+    await navigator.clipboard.writeText(shareID)
+    //message to indicate url is copied in clipboard
+    //if not logged in(will return with an error), message to indicate that you need to login to share
+  }
+
+  const handleResetClick = async() => {
+    const payload = {"num": Timetablenumber}
+    const response = await postHandler("http://127.0.0.1:3000/timetable/reset",payload, true)
+    console.log(response)
+    //success message
+    // if not logged in(will return with an error), message to indicate that you need to login to reset
+  }
     
   return (
     <div>
@@ -95,11 +112,12 @@ const Landing = () => {
       <div className={Styles.ttBtnContainer}>
       <p className={Styles.title}>Timetable</p>
       <div className={Styles.btnContainer}>
+
       <button className={Styles.exportBtn}>Export</button>
-      <button className={Styles.Btn}>Share</button>
+      <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
       <button className={Styles.Btn}>Add</button>
       <button className={Styles.Btn}>Load</button>
-      <button className={Styles.Btn}>Reset</button>
+      <button className={Styles.Btn} onClick = {handleResetClick}>Reset</button>
       </div>
       </div>
       <Timetable></Timetable>

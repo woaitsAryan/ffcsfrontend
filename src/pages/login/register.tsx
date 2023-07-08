@@ -32,6 +32,7 @@ const LoginForm = () => {
     }
   }, []);
   const handleContinue = () => {
+      //validate if username is atleast 8 characters long
     if (step === 1) {
       gsap.fromTo(
         stepRef.current,
@@ -45,6 +46,7 @@ const LoginForm = () => {
       );
       // console.log(stepRef.current)
     } else if (step === 2) {
+      //validate if the password is atleast 8 characters long and has a number
       const payload = { username: username, password: password };
       console.log(payload);
       postHandler("http://127.0.0.1:3000/register", payload, false).then(
