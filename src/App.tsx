@@ -5,9 +5,12 @@ import Auth from './pages/login/auth'
 import Login from './pages/login/login'
 import Register from './pages/login/register'
 import Sharetimetable from './pages/Sharetimetable'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  return (
+  return (<div>
+    <ToastContainer/>
     <Router>
       <Routes>
         <Route
@@ -32,6 +35,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </div>
   )
 }
 
