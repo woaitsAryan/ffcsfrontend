@@ -32,7 +32,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className={`${styles.container} ${fadeOut ? styles["fade-out"] : ""}`}>
-      <div>
+      <div className={styles.container2}>
         <p className={styles.step}>
           Step 1/
           <p className={styles["step-number"]}>3</p>
