@@ -9,14 +9,13 @@ body {
   margin: 0;
   padding: 0;
 }
-html{
-  /* overflow-x: hidden; */
-}
+
 
 .mainflexbox {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 100%;
 }
 
 .slotsContainer {
@@ -64,7 +63,7 @@ html{
 .ttBtnContainer {
   display: flex;
   align-items: center;
-  gap: 45%;
+  gap: 55%;
   flex-direction: column;
 }
 
@@ -150,12 +149,12 @@ html{
 .timetableTitle{
   display: inline-block;
   margin-top: 1rem;
-  font-size: .0rem;
+  font-size: 4.0rem;
   margin-top: 3%;
   margin-bottom: 3%;
   margin-left: 3%;
   font-weight: bold;
-  color: #bf5af2;
+  color: #000;
 }
 .title {
   display: inline-block;
@@ -172,7 +171,7 @@ html{
   scroll-padding-inline: 2%;
 }
 
-@media (min-width: 550px) {
+@media (max-width: 550px) {
   .mainflexbox {
     display: flex;
     justify-content: center;
@@ -224,14 +223,14 @@ html{
   .ttBtnContainer {
     display: flex;
     align-items: center;
-    gap: 15%;
-    flex-direction: row;
+    gap: 45%;
+    flex-direction: column;
   }
 
   .exportBtn {
     height: fit-content;
-    padding: 0.75rem;
-    font-size: 1rem;
+    padding: 0.6rem;
+    font-size: 0.8rem;
     margin: 0.4rem;
     border-radius: 10px;
     font-weight: 600;
@@ -286,8 +285,8 @@ html{
 
   .Btn {
     height: fit-content;
-    padding: 0.75rem;
-    font-size: 1rem;
+    padding: 0.6rem;
+    font-size: 0.8rem;
     margin: 0.4rem;
     border-radius: 10px;
     font-weight: 600;

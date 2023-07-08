@@ -14,12 +14,28 @@
     align-items: center;
 }
 .aboutCsiContainer{
+    font-size: 2rem;
     max-width: 40%;
     display: flex;
     flex-direction: column;
 }
 .aboutFfcsContainer{
     max-width: 40%;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
+}
+@media (max-width:550px){
+    .aboutCsiContainer{
+        font-size: 1rem;
+        max-width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutFfcsContainer{
+        max-width: 40%;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
 }
