@@ -18,6 +18,14 @@ interface Slot {
 }
 
 const Landing = () => { 
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [arrowRotation, setArrowRotation] = useState(0);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+    setArrowRotation(arrowRotation => (arrowRotation === 0 ? 180 : 0));
+  }
+
   const [selectedCourseType, setSelectedCourseType] = useState("foundationcore");
   const [selectedSlots, setSelectedSlots] = useState<Slot[]>([]);
   const [Timetablenumber, setTimetablenumber] = useState<number>(0);
@@ -120,7 +128,26 @@ const Landing = () => {
       <button className={Styles.Btn} onClick = {handleResetClick}>Reset</button>
       </div>
       </div>
+      <div className={Styles.ttContainerBorder}>
+      <div className={Styles.timetableNumberContainer}>
+        <img
+          src="arrow.svg"
+          alt="arrow"
+          className={Styles.arrow}
+          onClick={toggleDropdown}
+          style={{ transform: `rotate(${arrowRotation}deg)` }}
+        />
+        <h2 className={Styles.timetableNumber}>Timetable name</h2>
+        {dropdownVisible && (
+          <div className={`${Styles.dropdownContent} ${Styles.open}`}>
+            <p>Option 1</p>
+            <p>Option 2</p>
+            <p>Option 3</p>
+          </div>
+        )}
+      </div>
       <Timetable></Timetable>
+      </div>
       <Footer></Footer> 
     </div>
   );
