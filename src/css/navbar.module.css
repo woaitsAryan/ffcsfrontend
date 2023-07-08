@@ -37,10 +37,10 @@
         height: 42px;
     }
     .navbar {
-        gap: 1rem;
+        gap: 20%;
         position: relative;
         margin-top: 3%;
-        width: 85%;
+        width: 90%;
         border-radius: 30px;
         display: flex;
         justify-content: space-between;

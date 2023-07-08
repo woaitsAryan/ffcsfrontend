@@ -118,7 +118,7 @@ const Landing = () => {
         ))}
       </div>
       <div className={Styles.ttBtnContainer}>
-      <p className={Styles.title}>Timetable</p>
+      <p className={Styles.timetableTitle}>Timetable</p>
       <div className={Styles.btnContainer}>
 
       <button className={Styles.exportBtn}>Export</button>
@@ -146,7 +146,7 @@ const Landing = () => {
           </div>
         )}
       </div>
-      <Timetable></Timetable>
+      <Timetable ></Timetable>
       </div>
       <Footer></Footer> 
     </div>

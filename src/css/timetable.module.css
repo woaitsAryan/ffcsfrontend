@@ -37,6 +37,10 @@ background-image: url('../../public/J slot.svg');
     text-align: center;
 }
 .timetableContainer{
+     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* -ms-overflow-style: none; */
+    overflow-x: scroll;
     width: fit-content;
     display:flex;
     justify-content: center;

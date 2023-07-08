@@ -32,7 +32,7 @@
 .title {
   max-width: 75%;
   max-height: max-content;
-  word-wrap: break-word;
+  word-wrap: break-all;
   word-break: break-all;
   text-align: center;
   margin-top: 0;
@@ -43,8 +43,8 @@
 }
 @media (max-width: 450px) {
   .container {
-    width: 100%;
-    max-height: max-content;
+    width: 75%;
+    max-height: 30%;
     display: flex;
     flex: 0 0 20%;
     scroll-snap-align: start;
