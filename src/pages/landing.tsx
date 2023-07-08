@@ -14,11 +14,11 @@ interface Slot {
   theoryslot: string;
   faculty: string;
   venue: string;
-  labslot: string;
+  labslot?: string;
 }
 
 const Landing = () => { 
-  const [selectedCourseType, setSelectedCourseType] = useState("disciplineCore");
+  const [selectedCourseType, setSelectedCourseType] = useState("foundationcore");
   const [selectedSlots, setSelectedSlots] = useState<Slot[]>([]);
 
   const handleCourseTypeClick = (name:string) => {
@@ -44,37 +44,37 @@ const Landing = () => {
           <CourseType
             name="Discipline Core"
             imagePath="Flask Icon.svg"
-            onClick = {() => handleCourseTypeClick("disciplineCore")}
+            onClick = {() => handleCourseTypeClick("disciplinecore")}
           ></CourseType>
           <CourseType
             name="Open Elective"
             imagePath="Gear Icon.svg"
-            onClick = {() => handleCourseTypeClick("openElective")}
+            onClick = {() => handleCourseTypeClick("openelective")}
           ></CourseType>
           <CourseType
             name="Foundation Core"
             imagePath="Window Icon.svg"
-            onClick = {() => handleCourseTypeClick("foundationCore")}
+            onClick = {() => handleCourseTypeClick("foundationcore")}
           ></CourseType>
           <CourseType
             name="Discipline Elective"
             imagePath="Hammer Icon.svg"
-            onClick = {()=>handleCourseTypeClick("disciplineElective")}
+            onClick = {()=>handleCourseTypeClick("disciplineelective")}
           ></CourseType>
           <CourseType
             name="Discipline Linked Engineering Sciences"
             imagePath="Tools Icon.svg"
-            onClick = {() => handleCourseTypeClick("disciplineLinkedEngineeringSciences")}
+            onClick = {() => handleCourseTypeClick("disciplinelinkedengineeringsciences")}
           ></CourseType>
           <CourseType
             name="Non Graded Core Requirement"
             imagePath="Guitar Icon.svg"
-            onClick = {() => handleCourseTypeClick("nonGradedCoreRequirement")}
+            onClick = {() => handleCourseTypeClick("nongradedcorerequirement")}
           ></CourseType>
           <CourseType
             name="Projects and Internship"
             imagePath="Shopping Basket.svg"
-            onClick = {() => handleCourseTypeClick("projectsAndInternship")}
+            onClick = {() => handleCourseTypeClick("projectsandinternship")}
           ></CourseType>
         </div>
       </div>

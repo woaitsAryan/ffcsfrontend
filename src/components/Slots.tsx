@@ -5,7 +5,7 @@ interface Slot {
   theoryslot: string;
   faculty: string;
   venue: string;
-  labslot: string;
+  labslot?: string;
 }
 
 interface SlotsProps {

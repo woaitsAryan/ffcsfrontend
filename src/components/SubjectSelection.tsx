@@ -11,7 +11,7 @@ interface Subject {
     theoryslot: string;
     faculty: string;
     venue: string;
-    labslot: string;
+    labslot?: string;
   }[];
 }
 
@@ -19,7 +19,7 @@ interface Slot {
   theoryslot: string;
   faculty: string;
   venue: string;
-  labslot: string;
+  labslot?: string;
 }
 
 interface SubjectSelectionProps {
@@ -35,8 +35,9 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
     const fetchSubjects = async () => {
       try {
         const url = `http://127.0.0.1:3000/courses/${selectedCourseType}`;
+        console.log(url)
         const response = await getHandler(url, false);
-        setSubjects(response.data);
+        setSubjects(response.data.coursesdata);
       } catch (error) {
         console.error(error);
       }
@@ -67,7 +68,9 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
           </tr>
         </thead>
         <tbody>
-          {subjects.map((subject,index) => (
+          {
+          subjects !== undefined && subjects.length > 0 ? 
+            (subjects.map((subject,index) => (
             <tr key={subject.code}>
             <td className={styles.tableData}>
               <input type="checkbox" onClick={() => handleCheckboxClick(subject.slots)}/>
@@ -82,7 +85,11 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
             <td className={styles.tableData}>0.0</td>
             <td className={styles.tableData}>{subject.credits}</td>
           </tr>
-          ))}
+          ))):(
+            <tr>
+               <td colSpan={10} className={styles.tableData}>No subjects found</td>
+            </tr>
+            )}  
         </tbody>
       </table>
     </div>
