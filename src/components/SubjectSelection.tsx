@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../css/subjectSelection.module.css";
-import axios from "axios";
 import getHandler from "../handlers/getHandler";
 
 interface Subject {
@@ -26,11 +25,13 @@ interface SubjectSelectionProps {
   selectedCourseType: string;
   onCheckboxChange: (slot: Slot[]) => void;
   onSubjectChange: (name: string) => void;
+  timetablenum: number;
 }
 
-const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange, onSubjectChange}) => {
+const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange, onSubjectChange, timetablenum}) => {
 
   const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [selectedSubject, setSelectedSubject] = useState<string>("");
 
   useEffect(() => {
     const fetchSubjects = async () => {
@@ -45,12 +46,19 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
 
     fetchSubjects();
   }, [selectedCourseType]);
+
+  useEffect(() => {
+    setSelectedSubject("");
+    onSubjectChange("");
+  }, [timetablenum]);
+
   const handleSubjectNameChange = (name:string) => {
     onSubjectChange(name);
   }
   const handleCheckboxClick = (subject: Subject) => {
     onCheckboxChange(subject.slots);
     handleSubjectNameChange(subject.code); 
+    setSelectedSubject(subject.code);
   };
 
   return (
@@ -76,7 +84,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
             (subjects.map((subject,index) => (
             <tr key={subject.code}>
             <td className={styles.tableData}>
-              <input type="radio" onClick={() => handleCheckboxClick(subject)}/>
+              <input type="radio" onClick={() => handleCheckboxClick(subject)} checked = {subject.code === selectedSubject}/>
             </td>
             <td className={styles.tableData}>{index + 1}</td>
             <td className={styles.tableData}>{subject.code}</td>

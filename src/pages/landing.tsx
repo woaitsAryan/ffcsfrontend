@@ -222,10 +222,11 @@ const Landing = () => {
       <img src='./search.svg' className={Styles.searchIcon}></img>
       </div>
       </div> */}
-      <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange} onSubjectChange={handleSubjectNameChange}></SubjectSelection>
+      <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange} 
+      onSubjectChange={handleSubjectNameChange} timetablenum={Timetablenumber}></SubjectSelection>
       <p className={Styles.title}>Course Slots</p>
       <div className={Styles.slotsContainer}>
-        {selectedSlots.map((slot, index) => (
+        {subjectName && selectedSlots.map((slot, index) => (
           <Slots key = {index} onSelect = {handleSlotSelect} slot={slot} selectedSlot = {selectedTimetableSlot}/>
         ))}
       </div>
