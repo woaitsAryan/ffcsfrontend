@@ -1,10 +1,10 @@
 .SubjectSelection {
-  width: 100vw;
+  width: 100%;
   border-spacing: 0.6rem 0.3rem;
   font-size: 1.0rem;
   display: table;
-  /* justify-content: center;
-  align-items: center; */
+  background-repeat: no-repeat;
+
 }
 .tableHeadings {
   background-size: cover;
@@ -34,6 +34,7 @@
 }
 @media (max-width:450px){
   .SubjectSelection {
+    margin-left: 25px;
     width: 100vw;
     border-spacing: 0.6rem 0.3rem;
     font-size: 1.0rem;
@@ -61,8 +62,9 @@
     border-radius: 10px;
   }
   .SubjectSelectionContainer {
+    margin-left: 10px;
     overflow-x: scroll;
-    width: 100%;
+    /* width: max-content; */
     display: flex;
     /* justify-content: center; */
     /* align-items: center; */
