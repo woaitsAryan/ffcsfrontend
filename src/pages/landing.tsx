@@ -322,6 +322,17 @@ const Landing = () => {
         />
         Option 3
       </label>
+      <label className={Styles.friendsTTheader}>Friend's Timetable</label>
+      <label>
+        <input
+          type="radio"
+          name="options"
+          value="option3"
+          checked={Timetablenumber === 2}
+          onChange={() => handleOptionClick(2)}
+        />
+        Friend 1
+      </label>
     </div>
   )}
 </div>
