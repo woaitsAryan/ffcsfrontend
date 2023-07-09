@@ -12,37 +12,49 @@ interface RowEntry {
 interface TimetableProps {
   propToWatch: any; 
   timetableNum: number;
+  isfriendTimetable?: boolean;
+  friendTimetableinfo: any;
 }
 
-const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum}) => {
+const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfriendTimetable, friendTimetableinfo}) => {
   const [data, setData] = useState(localStorage.getItem('timetable') ? JSON.parse(localStorage.getItem('timetable') as string) : defaultdata);
 
   useEffect(() => {
     const fetchTimetable = async () => {
-      const token = Cookies.get('token');
-      if (token) {
-        try {
-          const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
-          const { timetable } = response.data;
-          console.log(response)
-          if(timetable[0].length > 0){
-            setData(timetable[timetableNum]);
+      if(!isfriendTimetable){
+        const token = Cookies.get('token');
+        if (token) {
+          try {
+            const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
+            const { timetable } = response.data;
+            if(timetable[0].length > 0){
+              setData(timetable[timetableNum]);
+            }
+          } catch (error) {
+            console.error('Error fetching timetable:', error);
           }
-        } catch (error) {
-          console.error('Error fetching timetable:', error);
         }
+      }else{
+        const payload = {"num": friendTimetableinfo.timetableid , "userID": friendTimetableinfo.friendid}
+        const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
+        const {timetable} = response.data
+        setData(timetable);
       }
-    };
+    }
 
     fetchTimetable();
-  }, [timetableNum]);
+  }, [timetableNum, isfriendTimetable]);
 
   useEffect(() => {
     const handlePropChange = () => {
       const currenttimetable = JSON.parse(localStorage.getItem('timetable') || 'null')
       if(currenttimetable){
         setData(currenttimetable);
-        const payload = {"timetable": currenttimetable, "num": timetableNum , "friendid": null}
+        let friendid = null;
+        if(isfriendTimetable){
+          friendid = friendTimetableinfo.friendid
+        }
+        const payload = {"timetable": currenttimetable, "num": timetableNum , "friendid": friendid}
         console.log(payload)
         postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
         .then((response) => {

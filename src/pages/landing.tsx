@@ -139,7 +139,7 @@ const Landing = () => {
     setShowModal(false);
   };
   const handleModalClose = () => {
-    setShowModal(false);
+    setShowModal(false);  
   };  
   const handleLoadFriendTimetable = () => {
     setShowModal(true);
@@ -154,7 +154,7 @@ const Landing = () => {
   const [Timetablenumber, setTimetablenumber] = useState<number>(0);
   const [selectedTimetableSlot, setSelectedTimetableSlot] = useState<Slot>({theoryslot: "", faculty: "", venue: ""});
   const [subjectName, setSubjectName] = useState<string>("");
-
+  const [friendTimetableInfo, setFriendTimetableInfo] = useState<any>({});
   const handleSubjectNameChange = (name:string) => {
     setSubjectName(name);
   }
@@ -178,12 +178,28 @@ const Landing = () => {
   const handleShareClick = () => {
     setShowShareModal(true);
   };
-  const handleShareModalConfirm = (username: string) => {
+  const handleShareModalConfirm = async (username: string) => {
+    console.log(username)
     setShareUsername(username);
     setShowShareModal(false);
-    // Perform further logic with the username
-    console.log("Share with username:", username);
+    const response = await postHandler("http://127.0.0.1:3000/share/get", {"friendname":shareUsername}, true)
+    if(response.status === 0){
+      toast.error("Please login/friend not found");
+      return;
+    }
+    const responseid = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
+    const shareID = `http://localhost:3000/timetable/${responseid.data.userID}/${Timetablenumber}`;
+    await navigator.clipboard.writeText(shareID);
+    toast.success("URL copied to clipboard, share it with your friend!")
   };
+
+  const handleModelConfirm = async (url: string) => {
+    const urlarr = url.split("/");
+    const friendid = urlarr[urlarr.length-2];
+    const timetableid = urlarr[urlarr.length-1];
+    setFriendTimetableInfo({"friendid":friendid, "timetableid":timetableid});
+    setViewFriendTimetable(true);
+  }
 
 
   // const handleShareClick = async () => {
@@ -194,6 +210,9 @@ const Landing = () => {
   // }
 
   const handleOptionClick = async (num:number) => {
+    if(num ===3){
+      setViewFriendTimetable(true);
+    }
     setTimetablenumber(num);
   }
 
@@ -278,23 +297,16 @@ const Landing = () => {
       <button className={Styles.exportBtn}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
       {showShareModal && (
-    <ShareModal closeModal={() => setShowShareModal(false)} onConfirm={handleShareModalConfirm} />
+    <ShareModal closeModal={() => setShowShareModal(false)} onConfirm={handleShareModalConfirm} 
+                            data = {{"placeholder":"Enter friends username", "buttonText":"OK"}}/>
   )}
       <button className={Styles.Btn}>Add</button>
       <button className={Styles.Btn} onClick={handleLoadFriendTimetable}>
         Load Friend's Timetable
       </button>     
       {showModal && (
-        <Modal closeModal={closeModal}>
-          {/* Modal content */}
-          <input
-            type="text"
-            placeholder="Enter friend's timetable link"
-            value={urlToCopy}
-            onChange={handleUrlChange}
-          />
-          <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
-        </Modal>
+        <ShareModal closeModal={() => setShowModal(false)} onConfirm={handleModelConfirm} 
+        data = {{"placeholder":"Enter friend's url", "buttonText":"OK"}}/>
       )}
       <button className={Styles.Btn} onClick = {handleResetClick}>Reset</button>
       </div>
@@ -346,9 +358,9 @@ const Landing = () => {
         <input
           type="radio"
           name="options"
-          value="option3"
-          checked={Timetablenumber === 2}
-          onChange={() => handleOptionClick(2)}
+          value="option4"
+          checked={Timetablenumber === 3}
+          onChange={() => handleOptionClick(3)}
         />
         Friend 1
       </label>
@@ -357,7 +369,8 @@ const Landing = () => {
 </div>
 
 
-      <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber}></Timetable>
+      <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber} 
+                isfriendTimetable = {viewFriendTimetable} friendTimetableinfo = {friendTimetableInfo} ></Timetable>
       </div>
       <Footer></Footer> 
     </div>
