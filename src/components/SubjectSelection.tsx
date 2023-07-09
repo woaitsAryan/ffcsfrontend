@@ -76,7 +76,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
             (subjects.map((subject,index) => (
             <tr key={subject.code}>
             <td className={styles.tableData}>
-              <input type="checkbox" onClick={() => handleCheckboxClick(subject)}/>
+              <input type="radio" onClick={() => handleCheckboxClick(subject)}/>
             </td>
             <td className={styles.tableData}>{index + 1}</td>
             <td className={styles.tableData}>{subject.code}</td>
