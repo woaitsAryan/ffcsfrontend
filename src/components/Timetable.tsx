@@ -25,7 +25,7 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum}) => {
           const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
           const { timetable } = response.data;
           console.log(response)
-          if(timetable.length != 0){
+          if(timetable[0].length > 0){
             setData(timetable[timetableNum]);
           }
         } catch (error) {
@@ -42,10 +42,11 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum}) => {
       const currenttimetable = JSON.parse(localStorage.getItem('timetable') || 'null')
       if(currenttimetable){
         setData(currenttimetable);
-        const payload = {"timetable": currenttimetable, "num": timetableNum }
+        const payload = {"timetable": currenttimetable, "num": timetableNum , "friendid": null}
+        console.log(payload)
         postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
         .then((response) => {
-          //nice
+          console.log(response)
         })
         .catch((error) => {
           console.log(error)

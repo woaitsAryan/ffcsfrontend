@@ -6,6 +6,7 @@ import postHandler from "../../handlers/postHandler";
 import Cookies from "js-cookie";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import validator from 'validator';
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -34,7 +35,10 @@ const LoginForm = () => {
     }
   }, []);
   const handleContinue = () => {
-      //validate if username is atleast 8 characters long
+    if (!validator.isAlphanumeric(username)) {
+      toast.error('Username must be alphanumeric')
+      return;
+    }
     if (step === 1) {
       gsap.fromTo(
         stepRef.current,
@@ -48,6 +52,10 @@ const LoginForm = () => {
       );
       // console.log(stepRef.current)
     } else if (step === 2) {
+      if (!validator.isStrongPassword(password, { minLength: 8, minLowercase: 0, minUppercase: 0, minNumbers: 1, minSymbols: 0, returnScore: false })){
+        toast.error('Password must be atleast 8 characters long and have a number')
+        return;
+      }
       //validate if the password is atleast 8 characters long and has a number
       const payload = { username: username, password: password };
       console.log(payload);
@@ -55,13 +63,13 @@ const LoginForm = () => {
         (response) => {
           const { token } = response.data;
           Cookies.set("token", token, { expires: 30 });
-          toast.success("good")
+          toast.success("Successfully registered!")
           setTimeout(()=>{
             navigate("/");
           },500)
         }
       ).catch((reject)=>{
-        toast.error('bad')
+        toast.error('Registration failed')
       });;
     }
   };

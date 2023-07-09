@@ -49,12 +49,17 @@ const LoginForm = () => {
     } else if (step === 2) {
       try {
         const payload = { username: username, password: password };
-        const response = await postHandler("http://127.0.0.1:3000/login", payload, false, "token");
-        
+        const response = await postHandler("http://127.0.0.1:3000/login", payload, false);
+        console.log(response)
+        if(response.statusCode != 200){
+          toast.error('Invalid username/password, kindly sign up')
+          navigate("/");
+          return;
+        }
         const { token } = response.data;
-        localStorage.setItem("token", token);
         Cookies.set("token", token, { expires: 30 });
-        toast.success('Good action')
+        if(response.data)
+        toast.success('Logged in successfully')
         setTimeout(()=>{        navigate("/");
       },500)
       } catch (error) {

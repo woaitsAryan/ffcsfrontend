@@ -215,13 +215,13 @@ const Landing = () => {
           ></CourseType>
         </div>
       </div>
-      <div className={Styles.inputCourseNameContainer}>
-      <p className={Styles.title}>Subject Selection</p>
-      <div className={Styles.inputContainer}>
-      <input type='search' placeholder="Enter course name" className={Styles.inputCourseName}></input>
+{/*       <div className={Styles.inputCourseNameContainer}>
+ */}      <p className={Styles.title}>Subject Selection</p>
+      {/* <div className={Styles.inputContainer}> */}
+      {/* <input type='search' placeholder="Enter course name" className={Styles.inputCourseName}></input>
       <img src='./search.svg' className={Styles.searchIcon}></img>
       </div>
-      </div>
+      </div> */}
       <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange} onSubjectChange={handleSubjectNameChange}></SubjectSelection>
       <p className={Styles.title}>Course Slots</p>
       <div className={Styles.slotsContainer}>
@@ -252,9 +252,36 @@ const Landing = () => {
         <h2 className={Styles.timetableNumber}>Timetable name</h2>
         {dropdownVisible && (
           <div className={`${Styles.dropdownContent} ${Styles.open}`}>
-            <button onClick={() => handleOptionClick(0)}>Option 1</button>
-            <button onClick={() => handleOptionClick(1)}>Option 2</button>
-            <button onClick={() => handleOptionClick(2)}>Option 3</button>
+            <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value="option1"
+                  checked = {Timetablenumber === 0}
+                  onClick={() => handleOptionClick(0)}
+                />
+                Option 1
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value="option2"
+                  checked = {Timetablenumber === 1}
+                  onClick={() => handleOptionClick(1)}
+                />
+                Option 2
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="options"
+                  value="option3"
+                  checked = {Timetablenumber === 2}
+                  onClick={() => handleOptionClick(2)}
+                />
+                Option 3
+              </label>
           </div>
         )}
       </div>
