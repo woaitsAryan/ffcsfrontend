@@ -1,3 +1,6 @@
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 interface ScheduleEntry {
     day: string;
     data: string[][];
@@ -17,7 +20,8 @@ interface ScheduleEntry {
 
         if (hasCommonElement) {
           if (subject && subject !== "") {
-            throw new Error(`Slot ${slotCode} already has a subject assigned.`);
+            toast.error(`Slot ${slotCode} already has ${subject}!`);
+            return [slotCode, subject];
           }
   
           return [slotCode, subjectCode];
