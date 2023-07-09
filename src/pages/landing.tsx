@@ -117,7 +117,8 @@ const Landing = () => {
   const [arrowRotation, setArrowRotation] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [urlToCopy, setUrlToCopy] = useState("");
-
+  const [viewFriendTimetable, setViewFriendTimetable] = useState(false);
+  
   const handleCopyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(urlToCopy);
@@ -280,7 +281,6 @@ const Landing = () => {
       </div>
       </div>
       <div className={Styles.ttContainerBorder}>
-      <div className={Styles.ttContainerBorder}>
   <div className={Styles.timetableNumberContainer}>
     {dropdownVisible && (
       <div className={`${Styles.dropdownContent} ${Styles.open}`}>
@@ -325,8 +325,6 @@ const Landing = () => {
     />
     <h2 className={Styles.timetableNumber}>Timetable name</h2>
   </div>
-  <Timetable propToWatch={selectedTimetableSlot} timetableNum={Timetablenumber}></Timetable>
-</div>
 
       <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber}></Timetable>
       </div>
