@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import Styles from "../css/modals.module.css";
+import { ToastContainer,toast } from "react-toastify";
 
 interface ModalProps {
   closeModal: () => void;
@@ -13,7 +14,9 @@ const Modal: React.FC<ModalProps> = ({ closeModal, children }) => {
     try {
       await navigator.clipboard.writeText(urlToCopy);
       console.log("URL copied to clipboard:", urlToCopy);
+      toast.success('Copied Successfully')
     } catch (error) {
+      toast.error('Can\'t copy')
       console.error("Failed to copy URL to clipboard:", error);
     }
   };
@@ -24,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({ closeModal, children }) => {
 
   return (
     <div className={Styles.modalOverlay}>
+      <ToastContainer/>
       <div className={Styles.modalContent}>
         
         <div className={Styles.modalBody}>
@@ -35,10 +39,9 @@ const Modal: React.FC<ModalProps> = ({ closeModal, children }) => {
             onChange={handleUrlChange}
           />
           <button onClick={handleCopyToClipboard}>
-            Copy to Clipboard
-          </button>
+Load          </button>
           <button className={Styles.closeButton} onClick={closeModal}>
-          &times;
+          Cancel
         </button>
         </div>
       </div>

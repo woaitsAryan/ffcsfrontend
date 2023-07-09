@@ -140,7 +140,7 @@ const Landing = () => {
     setShowModal(true);
   };
   const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
+    setDropdownVisible((prevVisible) => !prevVisible);
     setArrowRotation(arrowRotation => (arrowRotation === 0 ? 180 : 0));
   }
 
@@ -281,50 +281,51 @@ const Landing = () => {
       </div>
       <div className={Styles.ttContainerBorder}>
       <div className={Styles.ttContainerBorder}>
-  <div className={Styles.timetableNumberContainer}>
-    {dropdownVisible && (
-      <div className={`${Styles.dropdownContent} ${Styles.open}`}>
-        <label>
-          <input
-            type="radio"
-            name="options"
-            value="option1"
-            checked={Timetablenumber === 0}
-            onClick={() => handleOptionClick(0)}
-          />
-          Option 1
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="options"
-            value="option2"
-            checked={Timetablenumber === 1}
-            onClick={() => handleOptionClick(1)}
-          />
-          Option 2
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="options"
-            value="option3"
-            checked={Timetablenumber === 2}
-            onClick={() => handleOptionClick(2)}
-          />
-          Option 3
-        </label>
-      </div>
-    )}
-    <img
-      src="arrow.svg"
-      alt="arrow"
-      className={Styles.arrow}
-      onClick={toggleDropdown}
-      style={{ transform: `rotate(${arrowRotation}deg)` }}
-    />
-    <h2 className={Styles.timetableNumber}>Timetable name</h2>
-  </div>
+      <div className={Styles.timetableNumberContainer}>
+  <img
+    src="arrow.svg"
+    alt="arrow"
+    className={`${Styles.arrow} ${dropdownVisible ? Styles.open : ""}`}
+    onClick={toggleDropdown}
+    style={{ transform: `rotate(${arrowRotation}deg)` }}
+  />
+  <h2 className={Styles.timetableNumber}>Timetable name</h2>
+  {dropdownVisible && (
+    <div className={Styles.dropdownContent}>
+      <label>
+        <input
+          type="radio"
+          name="options"
+          value="option1"
+          checked={Timetablenumber === 0}
+          onChange={() => handleOptionClick(0)}
+        />
+        Option 1
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="options"
+          value="option2"
+          checked={Timetablenumber === 1}
+          onChange={() => handleOptionClick(1)}
+        />
+        Option 2
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="options"
+          value="option3"
+          checked={Timetablenumber === 2}
+          onChange={() => handleOptionClick(2)}
+        />
+        Option 3
+      </label>
+    </div>
+  )}
+</div>
+
   <Timetable propToWatch={selectedTimetableSlot} timetableNum={Timetablenumber}></Timetable>
 </div>
 

@@ -121,7 +121,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -111;
+  z-index: 0;
 }
 
 .Btn {
@@ -171,8 +171,13 @@ body {
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 2%;
 }
-
+body{
+  overflow-x: hidden;
+}
 @media (max-width: 550px) {
+  body{
+    overflow-x: hidden;
+  }
   .mainflexbox {
     display: flex;
     justify-content: center;
@@ -198,6 +203,8 @@ body {
   }
 
   .courseTypeContainer {
+    margin-left: 10px;
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
