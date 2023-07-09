@@ -34,6 +34,14 @@ const LoginForm = () => {
       );
     }
   }, []);
+
+  const storeTimetable =async () =>{
+    const payload = { "timetable": JSON.parse(localStorage.getItem('timetable') || 'null'), "num": 0 };
+    const response = await postHandler("http://127.0.0.1:3000/timetable/set", payload, true);
+    console.log(response);
+
+  }
+
   const handleContinue = () => {
     if (!validator.isAlphanumeric(username)) {
       toast.error('Username must be alphanumeric')

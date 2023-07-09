@@ -44,6 +44,7 @@ const Navbar: React.FC = () => {
   const removeTokenFromLocalStorage = () => {
     Cookies.remove('token');
     setIsLoggedIn(false);
+    localStorage.removeItem('timetable');
     navigate('/');
     window.location.reload();
   };

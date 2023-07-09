@@ -12,7 +12,8 @@ import SubjectSelection from "../components/SubjectSelection";
 import postHandler from "../handlers/postHandler";
 import removeData from "../handlers/removeData";
 import addData from "../handlers/addData";
-
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 let scheduleData = [
   {   "day": "Monday",
       "data": [
@@ -173,10 +174,13 @@ const Landing = () => {
 
   const handleShareClick = async () => {
     const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
+    if(response.status === 0){
+      toast.error("Please login to share");
+      return;
+    }
     const shareID = `http://localhost:3000/timetable/${response.data.userID}/${Timetablenumber}`
     await navigator.clipboard.writeText(shareID)
-    //message to indicate url is copied in clipboard
-    //if not logged in(will return with an error), message to indicate that you need to login to share
+    toast.success("URL copied in clipboard")
   }
 
   const handleOptionClick = async (num:number) => {
@@ -186,9 +190,11 @@ const Landing = () => {
   const handleResetClick = async() => {
     const payload = {"num": Timetablenumber}
     const response = await postHandler("http://127.0.0.1:3000/timetable/reset",payload, true)
-    console.log(response)
-    //success message
-    // if not logged in(will return with an error), message to indicate that you need to login to reset
+    if(response.status === 0){
+      toast.error("Please login to reset");
+      return;
+    }
+    toast.success("Successfully reset timetable")
   }
     
   return (
