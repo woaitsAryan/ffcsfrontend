@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState,ChangeEvent} from "react";
 // import Navbar from '../components/Navbar';
+import Modal from "../components/Modal";
 import Hero from "../components/Hero";
 import { ButtonProvider } from "../buttonContext";
 import Styles from "../css/landing.module.css";
@@ -114,7 +115,30 @@ interface Slot {
 const Landing = () => { 
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [arrowRotation, setArrowRotation] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [urlToCopy, setUrlToCopy] = useState("");
 
+  const handleCopyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(urlToCopy);
+      console.log("URL copied to clipboard:", urlToCopy);
+    } catch (error) {
+      console.error("Failed to copy URL to clipboard:", error);
+    }
+  };
+
+  const handleUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUrlToCopy(e.target.value);
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  const handleModalClose = () => {
+    setShowModal(false);
+  };  
+  const handleLoadFriendTimetable = () => {
+    setShowModal(true);
+  };
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
     setArrowRotation(arrowRotation => (arrowRotation === 0 ? 180 : 0));
@@ -236,55 +260,73 @@ const Landing = () => {
       <button className={Styles.exportBtn}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
       <button className={Styles.Btn}>Add</button>
-      <button className={Styles.Btn}>Load</button>
+      <button className={Styles.Btn} onClick={handleLoadFriendTimetable}>
+        Load Friend's Timetable
+      </button>     
+      {showModal && (
+        <Modal closeModal={closeModal}>
+          {/* Modal content */}
+          <input
+            type="text"
+            placeholder="Enter friend's timetable link"
+            value={urlToCopy}
+            onChange={handleUrlChange}
+          />
+          <button onClick={handleCopyToClipboard}>Copy to Clipboard</button>
+        </Modal>
+      )}
       <button className={Styles.Btn} onClick = {handleResetClick}>Reset</button>
       </div>
       </div>
       <div className={Styles.ttContainerBorder}>
-      <div className={Styles.timetableNumberContainer}>
-        <img
-          src="arrow.svg"
-          alt="arrow"
-          className={Styles.arrow}
-          onClick={toggleDropdown}
-          style={{ transform: `rotate(${arrowRotation}deg)` }}
-        />
-        <h2 className={Styles.timetableNumber}>Timetable name</h2>
-        {dropdownVisible && (
-          <div className={`${Styles.dropdownContent} ${Styles.open}`}>
-            <label>
-                <input
-                  type="radio"
-                  name="options"
-                  value="option1"
-                  checked = {Timetablenumber === 0}
-                  onClick={() => handleOptionClick(0)}
-                />
-                Option 1
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="options"
-                  value="option2"
-                  checked = {Timetablenumber === 1}
-                  onClick={() => handleOptionClick(1)}
-                />
-                Option 2
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="options"
-                  value="option3"
-                  checked = {Timetablenumber === 2}
-                  onClick={() => handleOptionClick(2)}
-                />
-                Option 3
-              </label>
-          </div>
-        )}
+      <div className={Styles.ttContainerBorder}>
+  <div className={Styles.timetableNumberContainer}>
+    {dropdownVisible && (
+      <div className={`${Styles.dropdownContent} ${Styles.open}`}>
+        <label>
+          <input
+            type="radio"
+            name="options"
+            value="option1"
+            checked={Timetablenumber === 0}
+            onClick={() => handleOptionClick(0)}
+          />
+          Option 1
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="options"
+            value="option2"
+            checked={Timetablenumber === 1}
+            onClick={() => handleOptionClick(1)}
+          />
+          Option 2
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="options"
+            value="option3"
+            checked={Timetablenumber === 2}
+            onClick={() => handleOptionClick(2)}
+          />
+          Option 3
+        </label>
       </div>
+    )}
+    <img
+      src="arrow.svg"
+      alt="arrow"
+      className={Styles.arrow}
+      onClick={toggleDropdown}
+      style={{ transform: `rotate(${arrowRotation}deg)` }}
+    />
+    <h2 className={Styles.timetableNumber}>Timetable name</h2>
+  </div>
+  <Timetable propToWatch={selectedTimetableSlot} timetableNum={Timetablenumber}></Timetable>
+</div>
+
       <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber}></Timetable>
       </div>
       <Footer></Footer> 
