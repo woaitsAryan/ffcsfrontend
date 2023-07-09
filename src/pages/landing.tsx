@@ -281,7 +281,6 @@ const Landing = () => {
       </div>
       </div>
       <div className={Styles.ttContainerBorder}>
-      <div className={Styles.ttContainerBorder}>
       <div className={Styles.timetableNumberContainer}>
   <img
     src="arrow.svg"
@@ -327,8 +326,6 @@ const Landing = () => {
   )}
 </div>
 
-  <Timetable propToWatch={selectedTimetableSlot} timetableNum={Timetablenumber}></Timetable>
-</div>
 
       <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber}></Timetable>
       </div>
