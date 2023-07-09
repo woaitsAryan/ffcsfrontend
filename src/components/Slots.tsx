@@ -22,7 +22,8 @@ const Slots: React.FC<SlotsProps> = ({ slot, onSelect, selectedSlot }) => {
     <div className={styles.mainContainer}>
       <input type="radio" onChange={handleSelect} checked = {slot == selectedSlot}/>
       <div className={styles.slotName}>{slot.theoryslot}</div>
-      <div className={styles.courseName}>{slot.faculty}</div>
+      <div>{slot.labslot}</div>
+      <div>{slot.venue}</div>
       <div className={styles.professorName}>{slot.faculty}</div>
     </div>
   );
