@@ -45,7 +45,9 @@ body {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
-
+button{
+  cursor:pointer ;
+}
 .inputCourseNameContainer {
   display: flex;
   flex-direction: column;
@@ -114,6 +116,7 @@ body {
 }
 
 .timetableNumberContainer {
+  left: 1%;
   position: relative;
   gap: 1rem;
   flex-direction: row-reverse;
@@ -122,6 +125,10 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 0;
+}
+.friendsTTheader{
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 
 .Btn {

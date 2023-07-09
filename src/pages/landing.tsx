@@ -2,6 +2,7 @@ import React, {useState,ChangeEvent} from "react";
 // import Navbar from '../components/Navbar';
 import Modal from "../components/Modal";
 import Hero from "../components/Hero";
+import ShareModal from "../components/ShareModal";
 import { ButtonProvider } from "../buttonContext";
 import Styles from "../css/landing.module.css";
 import CourseType from "../components/CourseType";
@@ -119,6 +120,8 @@ const Landing = () => {
   const [showModal, setShowModal] = useState(false);
   const [urlToCopy, setUrlToCopy] = useState("");
   const [viewFriendTimetable, setViewFriendTimetable] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareUsername, setShareUsername] = useState("");
   
   const handleCopyToClipboard = async () => {
     try {
@@ -172,16 +175,23 @@ const Landing = () => {
     setSelectedTimetableSlot(slot);
   };
 
-  const handleShareClick = async () => {
-    const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
-    if(response.status === 0){
-      toast.error("Please login to share");
-      return;
-    }
-    const shareID = `http://localhost:3000/timetable/${response.data.userID}/${Timetablenumber}`
-    await navigator.clipboard.writeText(shareID)
-    toast.success("URL copied in clipboard")
-  }
+  const handleShareClick = () => {
+    setShowShareModal(true);
+  };
+  const handleShareModalConfirm = (username: string) => {
+    setShareUsername(username);
+    setShowShareModal(false);
+    // Perform further logic with the username
+    console.log("Share with username:", username);
+  };
+
+
+  // const handleShareClick = async () => {
+  //   const response = await postHandler('http://127.0.0.1:3000/share/get', {}, true)
+  //   const shareID = `http://localhost:3000/timetable/${response.data.userID}/${Timetablenumber}`
+  //   await navigator.clipboard.writeText(shareID)
+   
+  // }
 
   const handleOptionClick = async (num:number) => {
     setTimetablenumber(num);
@@ -267,6 +277,9 @@ const Landing = () => {
 
       <button className={Styles.exportBtn}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
+      {showShareModal && (
+    <ShareModal closeModal={() => setShowShareModal(false)} onConfirm={handleShareModalConfirm} />
+  )}
       <button className={Styles.Btn}>Add</button>
       <button className={Styles.Btn} onClick={handleLoadFriendTimetable}>
         Load Friend's Timetable
@@ -327,6 +340,17 @@ const Landing = () => {
           onChange={() => handleOptionClick(2)}
         />
         Option 3
+      </label>
+      <label className={Styles.friendsTTheader}>Friend's Timetable</label>
+      <label>
+        <input
+          type="radio"
+          name="options"
+          value="option3"
+          checked={Timetablenumber === 2}
+          onChange={() => handleOptionClick(2)}
+        />
+        Friend 1
       </label>
     </div>
   )}
