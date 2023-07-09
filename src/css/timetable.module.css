@@ -1,6 +1,13 @@
 .timetable{
+    margin: auto;
+    position: relative;
+    /* left: 30%; */
+    padding-right:4%;
+    width: 100%;
     border-spacing: 0.6rem 0.3rem;
    font-size: 1.2rem;
+   overflow-x: scroll;
+   z-index: -9999999;
     display: table; 
     justify-content: center;
     align-items: center;
@@ -37,19 +44,26 @@ background-image: url('../../public/J slot.svg');
     text-align: center;
 }
 .timetableContainer{
-     scroll-snap-type: x mandatory;
+    z-index: -9999999;
+    position: relative;
+    width: 100vw;
+    overflow-x: scroll;
+    margin: auto;
+    margin-bottom: 100px;
+    scroll-snap-type: x mandatory;
     scrollbar-width: none;
     /* -ms-overflow-style: none; */
-    overflow-x: scroll;
-    width: fit-content;
-    display:flex;
+    /* display:flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 100px;
+    align-items: center; */
 }
  @media (max-width: 450px) {
 
 .timetableContainer{
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    box-sizing: border-box;
     display: flex;
     overflow-x: scroll;
     margin-bottom: 100px;

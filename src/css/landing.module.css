@@ -10,12 +10,19 @@ body {
   padding: 0;
 }
 
-
+.ttContainerBorder{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: max-content;
+}
 .mainflexbox {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 100%;
+  height: fit-content;
 }
 
 .slotsContainer {
@@ -182,8 +189,17 @@ body{
   overflow-x: hidden;
 }
 @media (max-width: 550px) {
+  .ttContainerBorder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
   body{
-    overflow-x: hidden;
+    width: 100vw;
+    overflow-x: hidden !important;
+    height: 100%;
   }
   .mainflexbox {
     display: flex;
