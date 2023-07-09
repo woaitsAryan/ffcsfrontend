@@ -9,6 +9,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.dropdownContent{
+  z-index: 1000;
+}
 
 .ttContainerBorder{
   position: relative;
@@ -135,7 +138,7 @@ button{
   align-items: center;
 }
 .friendsTTheader{
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
