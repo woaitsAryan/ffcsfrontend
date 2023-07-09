@@ -14,9 +14,9 @@ const Modal: React.FC<ModalProps> = ({ closeModal, children }) => {
     try {
       await navigator.clipboard.writeText(urlToCopy);
       console.log("URL copied to clipboard:", urlToCopy);
-      toast.success('Copied Successfully')
+      toast.success('Loaded Successfully')
     } catch (error) {
-      toast.error('Can\'t copy')
+      toast.error('Can\'t load')
       console.error("Failed to copy URL to clipboard:", error);
     }
   };
