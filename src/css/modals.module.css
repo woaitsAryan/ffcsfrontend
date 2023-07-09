@@ -8,12 +8,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
-
+  z-index: 1;
 }
 
 .modalContent {
-  z-index: 10000;
+  position: relative;
+  /* z-index: ; */
   background-color: #fff;
   padding: 2rem;
   border-radius: 8px;

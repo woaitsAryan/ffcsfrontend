@@ -296,18 +296,12 @@ const Landing = () => {
 
       <button className={Styles.exportBtn}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
-      {showShareModal && (
-    <ShareModal closeModal={() => setShowShareModal(false)} onConfirm={handleShareModalConfirm} 
-                            data = {{"placeholder":"Enter friends username", "buttonText":"OK"}}/>
-  )}
+     
       <button className={Styles.Btn}>Add</button>
       <button className={Styles.Btn} onClick={handleLoadFriendTimetable}>
         Load Friend's Timetable
       </button>     
-      {showModal && (
-        <ShareModal closeModal={() => setShowModal(false)} onConfirm={handleModelConfirm} 
-        data = {{"placeholder":"Enter friend's url", "buttonText":"OK"}}/>
-      )}
+     
       <button className={Styles.Btn} onClick = {handleResetClick}>Reset</button>
       </div>
       </div>
@@ -373,6 +367,14 @@ const Landing = () => {
                 isfriendTimetable = {viewFriendTimetable} friendTimetableinfo = {friendTimetableInfo} ></Timetable>
       </div>
       <Footer></Footer> 
+      {showModal && (
+        <ShareModal closeModal={() => setShowModal(false)} onConfirm={handleModelConfirm} 
+        data = {{"placeholder":"Enter friend's url", "buttonText":"OK"}}/>
+      )}
+       {showShareModal && (
+    <ShareModal closeModal={() => setShowShareModal(false)} onConfirm={handleShareModalConfirm} 
+                            data = {{"placeholder":"Enter friends username", "buttonText":"OK"}}/>
+  )}
     </div>
   );
 };

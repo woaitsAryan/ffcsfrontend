@@ -7,7 +7,6 @@
     border-spacing: 0.6rem 0.3rem;
    font-size: 1.2rem;
    overflow-x: scroll;
-   z-index: -9999999;
     display: table; 
     justify-content: center;
     align-items: center;
@@ -44,7 +43,6 @@ background-image: url('../../public/J slot.svg');
     text-align: center;
 }
 .timetableContainer{
-    z-index: -9999999;
     position: relative;
     width: 100vw;
     overflow-x: scroll;
