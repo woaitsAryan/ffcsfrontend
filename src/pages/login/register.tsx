@@ -72,6 +72,7 @@ const LoginForm = () => {
           const { token } = response.data;
           Cookies.set("token", token, { expires: 30 });
           toast.success("Successfully registered!")
+          storeTimetable();
           setTimeout(()=>{
             navigate("/");
           },500)

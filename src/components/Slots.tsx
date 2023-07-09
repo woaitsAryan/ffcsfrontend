@@ -17,7 +17,7 @@ interface SlotsProps {
 const Slots: React.FC<SlotsProps> = ({ slot, onSelect, selectedSlot }) => {
   const handleSelect = () => {
     onSelect(slot); // Notify the parent component about the selection
-  };
+  };  
   return (
     <div className={styles.mainContainer}>
       <input type="radio" onChange={handleSelect} checked = {slot == selectedSlot}/>
