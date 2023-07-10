@@ -41,7 +41,11 @@
 @media (max-width: 550px) {
   .container {
     width: 80%;
-    height: 180px;
+    height: fit-content;
     margin: 2% auto;
+  }
+  .title{
+    max-width: 75vw;
+    font-size: 1rem;
   }
 }
