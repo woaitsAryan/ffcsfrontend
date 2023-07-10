@@ -36,11 +36,13 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           }
         }
       }else{
+        console.log("getting his timetable")
         const payload = {"num": props.friendTimetableinfo.timetableid , "userID": props.friendTimetableinfo.friendid}
         const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
         const {timetable} = response.data
         localStorage.setItem('friendtimetable', JSON.stringify(timetable))
         setFriendTimetable(timetable);
+        console.log(timetable)
         console.log("Getting friends timetable")
       }
     }
@@ -53,10 +55,9 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
       const currenttimetable = JSON.parse(localStorage.getItem('timetable') || 'null')
       const friendtimetable = JSON.parse(localStorage.getItem('friendtimetable') || 'null')
       if(props.isfriendTimetable){
-        console.log("Setting friends timetable")
         setFriendTimetable(friendtimetable);
         const friendid = props.friendTimetableinfo.friendid
-        const payload = {"timetable": currenttimetable, "num": props.timetableNum , "friendid": friendid}
+        const payload = {"timetable": friendtimetable, "num": props.timetableNum , "friendid": friendid}
         console.log(payload)
         postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
         .then((response) => {
@@ -121,24 +122,59 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
         </tr>
       </thead>
       <tbody>
-      {
-        data.map((row: RowEntry, index:number) => (
-          <tr>
-            <td>{row.day}</td>
-            {row.data.map((value, index:number) => (
-             <td className={`${value[0]==='' && value[1]===''?'':(value[0]!=='' && value[1]===''?styles.slots:styles.selectSlots)}`}>   
-             {value[0]}
-             {value[1] && (
-               <>
-                 <br />
-                 {value[1]}
-               </>
-             )}
-             </td>
-            ))}
-          </tr>
-        ))
-      }
+          {props.isfriendTimetable ? (
+          friendtimetable.map((row: RowEntry, index: number) => (
+            <tr key={index}>
+              <td>{row.day}</td>
+              {row.data.map((value, index: number) => (
+                <td
+                  key={index}
+                  className={`${
+                    value[0] === '' && value[1] === ''
+                      ? ''
+                      : value[0] !== '' && value[1] === ''
+                      ? styles.slots
+                      : styles.selectSlots
+                  }`}
+                >
+                  {value[0]}
+                  {value[1] && (
+                    <>
+                      <br />
+                      {value[1]}
+                    </>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))
+        ) : (
+          data.map((row: RowEntry, index: number) => (
+            <tr key={index}>
+              <td>{row.day}</td>
+              {row.data.map((value, index: number) => (
+                <td
+                  key={index}
+                  className={`${
+                    value[0] === '' && value[1] === ''
+                      ? ''
+                      : value[0] !== '' && value[1] === ''
+                      ? styles.slots
+                      : styles.selectSlots
+                  }`}
+                >
+                  {value[0]}
+                  {value[1] && (
+                    <>
+                      <br />
+                      {value[1]}
+                    </>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))
+        )}
       </tbody>
     </table>
     </div>

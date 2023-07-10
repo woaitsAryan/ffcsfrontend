@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../css/auth.module.css";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 let val = "";
 interface LocationState {
   buttonClicked: string;
 }
 
 const AuthPage: React.FC = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const location = useLocation();
   const buttonClicked = (location.state as LocationState)?.buttonClicked;
   console.log(buttonClicked);
@@ -17,6 +21,10 @@ const AuthPage: React.FC = () => {
   const [fadeOut, setFadeOut] = useState(false);
 
   const handleLogin_ = () => {
+    if (!isChecked){
+      toast.error("Please agree to the Terms & Conditions and Privacy Policy");
+      return;
+    }
     setFadeOut(true);
     setTimeout(() => {
       navigate("/login");
@@ -24,10 +32,17 @@ const AuthPage: React.FC = () => {
   };
 
   const handleRegister_ = () => {
+    if(!isChecked){
+      toast.error("Please agree to the Terms & Conditions and Privacy Policy");
+      return;
+    }
     setFadeOut(true);
     setTimeout(() => {
       navigate("/register");
     }, 500); // Adjust the duration of the fade-out animation here
+  };
+  const handleCheckboxChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
+    setIsChecked(event.target.checked);
   };
 
   return (
@@ -50,7 +65,7 @@ const AuthPage: React.FC = () => {
           Let's set up your account up and get to know you
         </p>
         <div className={styles["TnC-container"]}>
-          <input type="checkbox" />I agree to the Terms & Conditions and Privacy
+          <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>I agree to the Terms & Conditions and Privacy
           Policy
         </div>
         <div className={styles["btn-container"]}>
