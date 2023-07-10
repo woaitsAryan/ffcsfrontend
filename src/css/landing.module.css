@@ -1,14 +1,3 @@
-body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: scroll;
-  overflow-x: hidden !important;
-  margin: 0;
-  padding: 0;
-}
 .dropdownContent {
   z-index: 1000;
 }
@@ -19,20 +8,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
-  z-index: 0;
 }
 .ttContainerBorder::-webkit-scrollbar {
   display: none;
 }
 .mainflexbox {
-  position: relative;
-  /* top: 30px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: fit-content;
-  height: fit-content;
 }
 
 .slotsContainer {
@@ -54,15 +34,10 @@ body {
 }
 
 .courseTypeContainer {
-  margin-left: 40px;
-  margin-right: 40px;
+  width: calc(100% - 5em);
+  margin: 0 auto;
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 0rem;
-  /* padding-bottom: 1rem; */
-  /* scroll-snap-type: x mandatory;
-  scrollbar-width: none; */
+  gap: 2.5em;
 }
 button {
   cursor: pointer;
@@ -87,18 +62,6 @@ button {
   justify-content: center;
   gap: 55%;
   flex-direction: column;
-}
-
-.exportBtn {
-  height: fit-content;
-  padding: 0.75rem;
-  font-size: 1rem;
-  margin: 0.4rem;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #000;
-  border: .3rem solid #425f57;
-  background: transparent;
 }
 
 .arrow {
@@ -139,8 +102,11 @@ label {
   background-color: #ddd;
 }
 
+.timetableNumber {
+  font-size: 2rem;
+}
+
 .timetableNumberContainer {
-  left: 1%;
   position: relative;
   gap: 1rem;
   flex-direction: row-reverse;
@@ -155,15 +121,20 @@ label {
 }
 
 .Btn {
-  height: fit-content;
-  padding: 1.0rem;
+  padding: 0.5em 1em;
   font-size: 1rem;
   margin: 0.4rem;
   border-radius: 10px;
   font-weight: 600;
-  color: white;
+  color: #fff;
   background-color: #425f57;
-  border: none;
+  border: 0.3rem solid #425f57;
+  transition: all 150ms ease-in-out;
+}
+
+.Btn:hover {
+  color: #000;
+  background: transparent;
 }
 
 .inputContainer {
@@ -180,12 +151,8 @@ label {
 .timetableTitle {
   display: inline-block;
   margin-top: 1rem;
-  font-size: 4rem;
-  margin-top: 3%;
-  margin-bottom: 3%;
-  margin-left: 3%;
-  font-weight: bold;
-  color: #000;
+  font-size: 3rem;
+  font-weight: 700;
 }
 .title {
   display: inline-block;
@@ -204,47 +171,27 @@ label {
 
 @media (max-width: 550px) {
   .subjectSelectionContainer {
-    position: relative;
     top: 100px;
   }
-  .courseSlotContainer {
-    margin: auto;
-  }
+
   .ttContainerBorder {
-    display: flex;
     justify-content: center;
     align-self: center;
     justify-self: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    max-height: max-content;
-  }
-  body {
-    width: 100vw;
-    overflow-x: hidden !important;
-    height: 100%;
-  }
-  .mainflexbox {
-    position: relative;
-    top: -2.8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .slotsContainer {
     flex-wrap: wrap;
     gap: 2rem;
-    display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .mainflexbox2 {
-    position: relative;
     top: 50px;
-    display: flex;
     justify-content: center;
     flex-direction: column;
   }
@@ -254,19 +201,15 @@ label {
   }
 
   .courseTypeContainer {
-    margin:auto;
     width: 100%;
-    display: flex;
     flex-wrap: wrap;
-    overflow-x: auto;
-    gap: 1rem;
+    justify-content: space-around;
+    gap: 0.25rem;
     padding-bottom: 1rem;
   }
 
   .inputCourseNameContainer {
-    display: flex;
     flex-direction: column;
-    gap: 0;
     align-items: center;
   }
 
@@ -278,7 +221,6 @@ label {
   }
 
   .ttBtnContainer {
-    display: flex;
     align-items: center;
     justify-content: center;
     gap: 45%;
@@ -293,11 +235,9 @@ label {
     border-radius: 10px;
     font-weight: 600;
     color: #000;
-    border: .15rem solid #425f57;
+    border: 0.15rem solid #425f57;
     background: transparent;
   }
-
-  
 
   .arrow {
     cursor: pointer;
@@ -316,7 +256,6 @@ label {
     background-color: white;
     border: 1px solid #ddd;
     padding: 10px;
-    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -354,11 +293,9 @@ label {
     color: white;
     background-color: #425f57;
     border: none;
-  
   }
-  
+
   .inputContainer {
-    display: flex;
     flex-direction: row-reverse;
     margin: 1rem;
   }
@@ -370,13 +307,8 @@ label {
   }
 
   .title {
-    display: inline-block;
     margin-top: 1rem;
-    font-size: 3rem;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    margin-left: 3%;
-    font-weight: bold;
+    font-size: 1.5rem;
   }
 
   .snapsInline {
