@@ -57,7 +57,9 @@
   body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
   }
-
+  .btnHide{
+    display: none;
+  }
   .mainContainer {
     align-self: flex-start;
     margin: 1%;
