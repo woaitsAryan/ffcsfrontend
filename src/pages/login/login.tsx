@@ -53,7 +53,7 @@ const LoginForm = () => {
       try {
         const payload = { username: username, password: password };
         const response = await postHandler("http://127.0.0.1:3000/login", payload, false);
-        if(response.stattusCode != 200){
+        if(response.statusCode != 200){
           toast.error('Invalid username/password, kindly sign up')
           navigate("/");
           return;
