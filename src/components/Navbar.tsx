@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   const checkLogin = (): Promise<boolean> => {
     const token = Cookies.get('token');
     if (token != undefined) {
-      return postHandler('http://localhost:3000/verify',{}, true)
+      return postHandler('http://127.0.0.1:3000/verify',{}, true)
       .then((response: AxiosResponse<{verified:boolean}>) => {
         const {verified} = response.data;
         return verified;
