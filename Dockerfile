@@ -6,12 +6,10 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
-
-RUN npm run build
+COPY build/ .
 
 RUN npm install -g serve
 
 EXPOSE 3005
 
-CMD [ "serve", "-s", "build" ]
+CMD ["serve", "-s", "build", "-l", "3005"]
