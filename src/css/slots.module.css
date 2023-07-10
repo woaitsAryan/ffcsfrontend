@@ -1,5 +1,5 @@
 .mainContainer{
-    background-image: url('../../public/J slot.svg');
+    background: #F5F0BB;
     background-repeat: no-repeat, no-repeat;
     background-size: 100%;
     background-position: left top, center;
@@ -12,7 +12,7 @@
     height: fit-content;
     padding: 1.5rem;
     border-radius: 10px;
-    color: #fff;
+    color: #000;
     font-weight: 400;
     flex-basis:25% ;
     object-fit: fill;

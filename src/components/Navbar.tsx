@@ -73,13 +73,13 @@ const Navbar: React.FC = () => {
               <li className={styles.navItem} onClick={handleLogin}>
                 Login
               </li>
-              <li className={styles.navItem} onClick={handleRegister}>
+              <li className={styles.navItem1} onClick={handleRegister}>
                 Sign Up
               </li>
             </>
           )}
           {isLoggedIn && (
-            <li className={styles.navItem} onClick={removeTokenFromLocalStorage}>
+            <li className={styles.navItem1} onClick={removeTokenFromLocalStorage}>
               Sign Out
             </li>
           )}

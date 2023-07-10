@@ -314,21 +314,20 @@ const Landing = () => {
           ></CourseType>
         </div>
       </div>
-{/*       <div className={Styles.inputCourseNameContainer}>
- */}      <p className={Styles.title}>Subject Selection</p>
-      {/* <div className={Styles.inputContainer}> */}
-      {/* <input type='search' placeholder="Enter course name" className={Styles.inputCourseName}></input>
-      <img src='./search.svg' className={Styles.searchIcon}></img>
-      </div>
-      </div> */}
+      <div className={Styles.subjectSelectionContainer}>
+      <p className={Styles.title}>Subject Selection</p> 
       <SubjectSelection selectedCourseType = {selectedCourseType} onCheckboxChange={handleCheckboxChange} 
       onSubjectChange={handleSubjectNameChange} timetablenum={Timetablenumber}></SubjectSelection>
+      </div>
+      <div className={Styles.courseSlotContainer}>
       <p className={Styles.title}>Course Slots</p>
       <div className={Styles.slotsContainer}>
         {subjectName && selectedSlots.map((slot, index) => (
           <Slots key = {index} onSelect = {handleSlotSelect} slot={slot} selectedSlot = {selectedTimetableSlot}/>
         ))}
       </div>
+      </div>
+
       <div className={Styles.ttBtnContainer}>
       <p className={Styles.timetableTitle}>Timetable</p>
       <div className={Styles.btnContainer}>
