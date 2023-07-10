@@ -1,9 +1,12 @@
 .timetable{
+    /* width:; */
     font-size: 1.2rem;
     display: table;
     justify-content: center;
     align-items: center;
     scroll-padding-inline-start: 0;
+    border-spacing: 5px 10px;
+
 }
 
 /* .head{
@@ -13,29 +16,38 @@
     margin: 10rem;
     text-align: center;
     font-weight: 400;
-    color: white;
+    color: black;
     padding: 1rem;
-    border-radius: 10px;
-background-color:#6F74E3;
+    border-radius: 5px;
+background-color:#F5F0BB;
+}
+.rowDay{
+    text-align: center;
+    font-weight: 400;
+    color: black;
+    padding: 1rem;
+    border-radius: 5px;
+background-color:#F5F0BB;
+border-right: 5.654px solid #A8E890;
 }
 .selectSlots{
     margin: 10rem;
     text-align: center;
     font-weight: 400;
-    color: white;
+    color: #000;
     padding: 1rem;
-    border-radius: 10px;
-background-color:black;
+    border-radius: 5px;
+background-color:#A8E890;
 }
 .thoeryTimings{
     background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
     font-weight: 400;
-    color: white;
+    color: #000;
     padding: 1rem;
-    border-radius: 10px;
-background-image: url('../../public/J slot.svg');
+    border-radius: 5px;
+background-color: #F5F0BB;
 }
 .lunch::after{
     content:"Lunch";

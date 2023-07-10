@@ -17,7 +17,7 @@ in VIT with an easy and flexible FFCS planner. </p>
    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
    </div>
   </div>
-  <p>Made with ❤️ by CSI</p>
+  <p className={styles.emoji}>Made with 💜 by CSI</p>
   </div>
 );
 };

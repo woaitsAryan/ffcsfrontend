@@ -6,13 +6,14 @@
     
 }
 .finalMainContainer{
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: rgba(232, 147, 207, 0.3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #C4DFAA;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+    
 .aboutCsiContainer{
     font-size: 2rem;
     max-width: 40%;

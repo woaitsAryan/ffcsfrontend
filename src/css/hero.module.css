@@ -8,10 +8,11 @@
   }
   
   .mainContainer {
-    border-radius: 30px;
+    border-radius: 10px;
     margin-bottom: 3%;
     gap: 3rem;
-    background: rgba(191, 90, 242, 30%);
+     background: rgba(196, 223, 170, 100%);
+;
     position: relative;
     display: flex;
     justify-content: center;
@@ -64,7 +65,7 @@
   @media (max-width: 550px) {
     .mainContainer {
      border-radius: 0px;
-      background: rgba(191, 90, 242, 30%);
+      background: rgba(19, 90, 242, 30%);
       position: relative;
       top: 1vw;
       margin: 0;

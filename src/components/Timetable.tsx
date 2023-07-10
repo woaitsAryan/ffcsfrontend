@@ -89,7 +89,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
     <table className={styles.timetable}>
       <thead className={styles.head}>
         <tr>
-          <th>Theory</th>
+          <th className={styles.rowDay}>Theory</th>
           <th className={styles.thoeryTimings}>8AM <br/> 8:50 AM</th>
           <th className={styles.thoeryTimings}>9AM <br/> 9:50 AM</th>
           <th className={styles.thoeryTimings}>10AM <br/> 10:50 AM</th>
@@ -105,7 +105,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           <th className={styles.thoeryTimings}>7PM <br/> 7:50 PM</th>
         </tr>
         <tr>
-          <th>Lab</th>
+          <th className={styles.rowDay}>Lab</th>
           <th className={styles.thoeryTimings}>8 AM <br/> 8:50 AM</th>
           <th className={styles.thoeryTimings}>8:51 AM <br/> 9:40 AM</th>
           <th className={styles.thoeryTimings}>9:51 AM <br/> 10:40 AM</th>
@@ -125,7 +125,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           {props.isfriendTimetable ? (
           friendtimetable.map((row: RowEntry, index: number) => (
             <tr key={index}>
-              <td>{row.day}</td>
+              <td className={styles.rowDay}>{row.day}</td>
               {row.data.map((value, index: number) => (
                 <td
                   key={index}
@@ -151,7 +151,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
         ) : (
           data.map((row: RowEntry, index: number) => (
             <tr key={index}>
-              <td>{row.day}</td>
+              <td className={styles.rowDay}>{row.day}</td>
               {row.data.map((value, index: number) => (
                 <td
                   key={index}
