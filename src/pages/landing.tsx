@@ -145,12 +145,9 @@ const Landing = () => {
             downloadLink.href = screenshot;
             downloadLink.download = 'screenshot.png';
             
-            // Programmatically trigger the download
             downloadLink.click();
             
-            // Clean up the temporary link element
             downloadLink.remove();
-          // Use the 'screenshot' data URL as needed, such as saving it to a file or displaying it in an image tag.
         })
         .catch((error) => {
           console.error('Error capturing screenshot:', error);
