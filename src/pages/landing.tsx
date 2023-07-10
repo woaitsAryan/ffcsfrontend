@@ -189,14 +189,21 @@ const Landing = () => {
   };
 
   const handleSlotSelect = async (slot: Slot)  => {
-    scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.theoryslot);
-    scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.labslot?selectedTimetableSlot.labslot:"nuffin");
-    scheduleData = addData(scheduleData,subjectName,slot.theoryslot);
-    scheduleData = addData(scheduleData,subjectName,slot.labslot?slot.labslot:"nuffin");
     if(viewFriendTimetable){
-      localStorage.setItem("friendtimetable", JSON.stringify(scheduleData));
+      const payload = {"num": friendTimetableInfo.timetableid , "userID":friendTimetableInfo.friendid}
+      const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
+      let {timetable} = response.data
+      timetable = removeData(timetable,subjectName,selectedTimetableSlot.theoryslot);
+      timetable = removeData(timetable,subjectName,selectedTimetableSlot.labslot?selectedTimetableSlot.labslot:"nuffin");
+      timetable = addData(timetable,subjectName,slot.theoryslot);
+      timetable = addData(timetable,subjectName,slot.labslot?slot.labslot:"nuffin");
+      localStorage.setItem("friendtimetable", JSON.stringify(timetable));
     }
     else{
+      scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.theoryslot);
+      scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.labslot?selectedTimetableSlot.labslot:"nuffin");
+      scheduleData = addData(scheduleData,subjectName,slot.theoryslot);
+      scheduleData = addData(scheduleData,subjectName,slot.labslot?slot.labslot:"nuffin");
       localStorage.setItem("timetable", JSON.stringify(scheduleData));
     }
     setSelectedTimetableSlot(slot);
@@ -205,11 +212,15 @@ const Landing = () => {
   const handleShareClick = () => {
     setShowShareModal(true);
   };
+  const handleStopViewingFriendTimetable = () => {
+    setViewFriendTimetable(false);
+  };
   const handleShareModalConfirm = async (username: string) => {
     console.log(username)
     setShareUsername(username);
     setShowShareModal(false);
-    const response = await postHandler("http://127.0.0.1:3000/share/addfriend", {"friendname":shareUsername}, true)
+    console.log(shareUsername)
+    const response = await postHandler("http://127.0.0.1:3000/share/addfriend", {"friendname":username}, true)
     if(response.status === 0){
       toast.error("Please login/friend not found");
       return;
@@ -225,6 +236,7 @@ const Landing = () => {
     const friendid = urlarr[urlarr.length-2];
     const timetableid = urlarr[urlarr.length-1];
     setFriendTimetableInfo({"friendid":friendid, "timetableid":timetableid});
+    console.log("set friend timetable  info")
     setViewFriendTimetable(true);
   }
 
@@ -324,7 +336,6 @@ const Landing = () => {
       <button className={Styles.exportBtn} onClick = {captureScreenshot}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
      
-      <button className={Styles.Btn}>Add</button>
       <button className={Styles.Btn} onClick={handleLoadFriendTimetable}>
         Load Friend's Timetable
       </button>     
@@ -334,6 +345,12 @@ const Landing = () => {
       </div>
       <div className={Styles.ttContainerBorder}>
       <div className={Styles.timetableNumberContainer}>
+      {viewFriendTimetable && <h2>You are viewing your friend's timetable</h2>}
+      {viewFriendTimetable && (
+        <button onClick={handleStopViewingFriendTimetable}>
+          Stop Viewing Friend's Timetable
+        </button>
+      )}
   <img
     src="arrow.svg"
     alt="arrow"
@@ -373,17 +390,6 @@ const Landing = () => {
           onChange={() => handleOptionClick(2)}
         />
         Option 3
-      </label>
-      <label className={Styles.friendsTTheader}>Friend's Timetable</label>
-      <label>
-        <input
-          type="radio"
-          name="options"
-          value="option4"
-          checked={Timetablenumber === 3}
-          onChange={() => handleOptionClick(3)}
-        />
-        Friend 1
       </label>
     </div>
   )}
