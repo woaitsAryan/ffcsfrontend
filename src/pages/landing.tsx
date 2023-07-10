@@ -327,39 +327,39 @@ const Landing = () => {
             name="Discipline Core"
             imagePath="Flask Icon.svg"
             onClick={() => handleCourseTypeClick("disciplinecore")}
-          />
+          ></CourseType>
           <CourseType
             name="Open Elective"
             imagePath="Gear Icon.svg"
             onClick={() => handleCourseTypeClick("openelective")}
-          />
+          ></CourseType>
           <CourseType
             name="Foundation Core"
             imagePath="Window Icon.svg"
             onClick={() => handleCourseTypeClick("foundationcore")}
-          />
+          ></CourseType>
           <CourseType
             name="Discipline Elective"
             imagePath="Hammer Icon.svg"
             onClick={() => handleCourseTypeClick("disciplineelective")}
-          />
+          ></CourseType>
           <CourseType
             name="Discipline Linked Engineering Sciences"
             imagePath="Tools Icon.svg"
             onClick={() =>
               handleCourseTypeClick("disciplinelinkedengineeringsciences")
             }
-          />
+          ></CourseType>
           <CourseType
             name="Non Graded Core Requirement"
             imagePath="Guitar Icon.svg"
             onClick={() => handleCourseTypeClick("nongradedcorerequirement")}
-          />
+          ></CourseType>
           <CourseType
             name="Projects and Internship"
             imagePath="Shopping Basket.svg"
             onClick={() => handleCourseTypeClick("projectsandinternship")}
-          />
+          ></CourseType>
         </div>
       </div>
       <div className={Styles.subjectSelectionContainer}>
@@ -389,7 +389,7 @@ const Landing = () => {
       <div className={Styles.ttBtnContainer}>
         <p className={Styles.timetableTitle}>Timetable</p>
         <div className={Styles.btnContainer}>
-          <button className={Styles.Btn} onClick={captureScreenshot}>
+          <button className={Styles.exportBtn} onClick={captureScreenshot}>
             Export
           </button>
           <button className={Styles.Btn} onClick={handleShareClick}>
