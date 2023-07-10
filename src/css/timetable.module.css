@@ -66,6 +66,10 @@
 .timetableContainer::-webkit-scrollbar {
   display: none;
 }
+.extraSpace
+{
+  padding: .5rem;
+}
 @media (max-width: 450px) {
   .timetableContainer {
     justify-content: flex-start;

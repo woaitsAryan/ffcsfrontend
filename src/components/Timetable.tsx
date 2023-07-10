@@ -96,7 +96,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           <th className={styles.thoeryTimings}>11AM <br/> 11:50 AM</th>
           <th className={styles.thoeryTimings}>12AM <br/> 12:50 AM</th>
           <th>--</th>
-          <th>Lunch</th>
+          <th className={styles.extraSpace}> </th>
           <th className={styles.thoeryTimings}>2PM <br/> 2:50 PM</th>
           <th className={styles.thoeryTimings}>3PM <br/> 3:50 PM</th>
           <th className={styles.thoeryTimings}>4PM <br/> 4:50 PM</th>
@@ -112,7 +112,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           <th className={styles.thoeryTimings}>10:41 AM <br/> 11:30 AM</th>
           <th className={styles.thoeryTimings}>11:40 AM <br/> 12:30 PM</th>
           <th className={styles.thoeryTimings}>12:31 PM <br/> 1:20 PM</th>
-          <th>Lunch</th>
+          <th></th>
           <th className={styles.thoeryTimings}>2 PM <br/> 2:50PM</th>
           <th className={styles.thoeryTimings}>2:51 PM <br/> 3:40PM</th>
           <th className={styles.thoeryTimings}>3:51 PM <br/> 4:40PM</th>
