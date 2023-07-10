@@ -5,7 +5,7 @@ body {
   right: 0;
   bottom: 0;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   margin: 0;
   padding: 0;
 }
@@ -27,7 +27,7 @@ body {
 }
 .mainflexbox {
   position: relative;
-  top: 30px;
+  /* top: 30px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -254,7 +254,7 @@ label {
   }
 
   .courseTypeContainer {
-    margin-left: 20px;
+    margin:auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

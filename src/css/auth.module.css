@@ -128,7 +128,7 @@
 @media (max-width: 520px) {
   body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
   .invis {
     display: none;

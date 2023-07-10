@@ -40,6 +40,8 @@
 
 @media (max-width: 550px) {
   .container {
+    flex-basis: auto;
+    overflow-x: hidden !important;
     width: 80%;
     height: fit-content;
     margin: 2% auto;
