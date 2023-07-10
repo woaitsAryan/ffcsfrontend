@@ -19,7 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: max-content;
+  width: 100vw;
   z-index: 0;
 }
 .ttContainerBorder::-webkit-scrollbar {
@@ -213,6 +213,8 @@ label {
   .ttContainerBorder {
     display: flex;
     justify-content: center;
+    align-self: center;
+    justify-self: center;
     align-items: center;
     flex-direction: column;
     width: 100%;

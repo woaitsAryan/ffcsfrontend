@@ -1,77 +1,76 @@
-.timetable{
-    /* width:; */
-    font-size: 1.2rem;
-    display: table;
-    justify-content: center;
-    align-items: center;
-    scroll-padding-inline-start: 0;
-    border-spacing: 5px 10px;
-
+.timetable {
+  /* width:; */
+  font-size: 1.2rem;
+  display: table;
+  justify-content: center;
+  align-items: center;
+  scroll-padding-inline-start: 0;
+  border-spacing: 5px 10px;
 }
 
 /* .head{
 
 } */
-.slots{
-    margin: 10rem;
-    text-align: center;
-    font-weight: 400;
-    color: black;
-    padding: 1rem;
-    border-radius: 5px;
-background-color:#F5F0BB;
+.slots {
+  margin: 10rem;
+  text-align: center;
+  font-weight: 400;
+  color: black;
+  padding: .8rem;
+  border-radius: 5px;
+  background-color: #f5f0bb;
 }
-.rowDay{
-    text-align: center;
-    font-weight: 400;
-    color: black;
-    padding: 1rem;
-    border-radius: 5px;
-background-color:#F5F0BB;
-border-right: 5.654px solid #A8E890;
+.rowDay {
+  text-align: center;
+  font-weight: 400;
+  color: black;
+  padding: .8rem;
+  border-radius: 5px;
+  background-color: #f5f0bb;
+  border-right: 5.654px solid #a8e890;
 }
-.selectSlots{
-    margin: 10rem;
-    text-align: center;
-    font-weight: 400;
-    color: #000;
-    padding: 1rem;
-    border-radius: 5px;
-background-color:#A8E890;
+.selectSlots {
+  margin: 10rem;
+  text-align: center;
+  font-weight: 400;
+  color: #000;
+  padding: .8rem;
+  border-radius: 5px;
+  background-color: #a8e890;
 }
-.thoeryTimings{
-    background-size: cover;
+.thoeryTimings {
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-    font-weight: 400;
-    color: #000;
-    padding: 1rem;
-    border-radius: 5px;
-background-color: #F5F0BB;
+  font-weight: 400;
+  color: #000;
+  padding: .8rem;
+  border-radius: 5px;
+  background-color: #f5f0bb;
 }
-.lunch::after{
-    content:"Lunch";
-    text-align: center;
+.lunch::after {
+  content: "Lunch";
+  text-align: center;
 }
-.timetableContainer{
-    position: relative;
-    width: 100vw;
-    overflow-x: scroll;
-    /* margin: auto; */
-    margin-bottom: 100px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;   
+.timetableContainer {
+  /* position: relative; */
+  display: flex;
+  width: 90vw;
+  align-self: center;
+  margin-bottom: 100px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 .timetableContainer::-webkit-scrollbar {
-    display: none;
-  }
- @media (max-width: 450px) {
-
-.timetableContainer{
+  display: none;
+}
+@media (max-width: 450px) {
+  .timetableContainer {
     justify-content: flex-start;
     align-items: flex-start;
-    /* padding: 1rem; */
+    /* padding: .8rem; */
     box-sizing: border-box;
     display: flex;
     overflow-x: scroll;
@@ -81,15 +80,18 @@ background-color: #F5F0BB;
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
-    /* padding: 1rem; */
+    /* padding: .8rem; */
     box-sizing: border-box;
     height: fit-content;
-}
-.timetable{border-spacing: 0.6rem 0.3rem;
+  }
+  .timetable {
+    border-spacing: 0.6rem 0.3rem;
+    align-self: center;
     font-size: 1.2rem;
     display: table;
     justify-content: center;
     align-items: center;
     scroll-padding-inline-start: 0;
-padding: 1rem;}
+    padding: 1rem;
+  }
 }
