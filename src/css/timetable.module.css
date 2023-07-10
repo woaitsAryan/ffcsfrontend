@@ -1,15 +1,9 @@
 .timetable{
-    margin: auto;
-    position: relative;
-    /* left: 30%; */
-    padding-right:4%;
-    width: 100%;
-    border-spacing: 0.6rem 0.3rem;
-   font-size: 1.2rem;
-   overflow-x: scroll;
-    display: table; 
+    font-size: 1.2rem;
+    display: table;
     justify-content: center;
     align-items: center;
+    scroll-padding-inline-start: 0;
 }
 
 /* .head{
@@ -22,11 +16,16 @@
     color: white;
     padding: 1rem;
     border-radius: 10px;
-background-image: url('../../public/K slot.svg');
-/* object-fit: cover; */
-background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+background-color:#6F74E3;
+}
+.selectSlots{
+    margin: 10rem;
+    text-align: center;
+    font-weight: 400;
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+background-color:black;
 }
 .thoeryTimings{
     background-size: cover;
@@ -50,10 +49,9 @@ background-image: url('../../public/J slot.svg');
     margin-bottom: 100px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    /* -ms-overflow-style: none; */
-    /* display:flex;
-    justify-content: center;
-    align-items: center; */
+    -ms-overflow-style: none;
+    
+    
 }
  @media (max-width: 450px) {
 

@@ -113,7 +113,7 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfrien
           <tr>
             <td>{row.day}</td>
             {row.data.map((value, index:number) => (
-             <td className={value[0]===''?styles.lunch:styles.slots}>   
+             <td className={`${value[1]==='' && value[0] !==''?styles.slots:(value[1]!=='' && value[0]!==''?styles.selectSlots:'')}`}>   
              {value[0]}
              {value[1] && (
                <>
