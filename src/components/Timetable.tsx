@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, forwardRef,   RefObject } from 'react';
 import defaultdata from './data.json';
 import styles from '../css/timetable.module.css'
 import postHandler from '../handlers/postHandler';
@@ -15,10 +15,9 @@ interface TimetableProps {
   timetableNum: number;
   isfriendTimetable?: boolean;
   friendTimetableinfo: any;
-  ref?: React.Ref<any>
 }
 
-const Timetable: React.ForwardRefRenderFunction<any, TimetableProps> = (props, ref) => {
+const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> = (props, ref) => {
   const [data, setData] = useState(localStorage.getItem('timetable') ? JSON.parse(localStorage.getItem('timetable') as string) : defaultdata);
   const[friendtimetable, setFriendTimetable] = useState(localStorage.getItem('friendtimetable') ? JSON.parse(localStorage.getItem('friendtimetable') as string) : defaultdata);
   useEffect(() => {
@@ -85,7 +84,7 @@ const Timetable: React.ForwardRefRenderFunction<any, TimetableProps> = (props, r
 
   return (
     // <div className={styles.mainContainer}>
-    <div className={styles.timetableContainer}>
+    <div ref = {ref}className={styles.timetableContainer}>
     <table className={styles.timetable}>
       <thead className={styles.head}>
         <tr>
@@ -147,7 +146,7 @@ const Timetable: React.ForwardRefRenderFunction<any, TimetableProps> = (props, r
   );
 };
 
-const ForwardedTimetable = React.forwardRef(Timetable);
+const ForwardedTimetable = forwardRef(Timetable);
 
 
 export default ForwardedTimetable;

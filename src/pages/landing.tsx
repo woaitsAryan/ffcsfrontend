@@ -136,7 +136,6 @@ const Landing = () => {
   };
 
   const captureScreenshot = () => {
-          console.log('hi')
 
     if (componentRef.current) {
       html2canvas(componentRef.current)
