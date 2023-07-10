@@ -127,7 +127,7 @@ const Timetable: React.ForwardRefRenderFunction<any, TimetableProps> = (props, r
           <tr>
             <td>{row.day}</td>
             {row.data.map((value, index:number) => (
-             <td className={value[0]===''?styles.lunch:styles.slots}>   
+             <td className={`${value[0]==='' && value[1]===''?'':(value[0]!=='' && value[1]===''?styles.slots:styles.selectSlots)}`}>   
              {value[0]}
              {value[1] && (
                <>
