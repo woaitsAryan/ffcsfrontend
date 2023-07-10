@@ -45,37 +45,39 @@ background-image: url('../../public/J slot.svg');
     position: relative;
     width: 100vw;
     overflow-x: scroll;
-    margin: auto;
+    /* margin: auto; */
     margin-bottom: 100px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    -ms-overflow-style: none;
-    
-    
+    -ms-overflow-style: none;   
 }
+.timetableContainer::-webkit-scrollbar {
+    display: none;
+  }
  @media (max-width: 450px) {
 
 .timetableContainer{
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1rem;
+    /* padding: 1rem; */
     box-sizing: border-box;
     display: flex;
     overflow-x: scroll;
-    margin-bottom: 100px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 1rem;
+    /* padding: 1rem; */
     box-sizing: border-box;
+    height: fit-content;
 }
 .timetable{border-spacing: 0.6rem 0.3rem;
     font-size: 1.2rem;
     display: table;
     justify-content: center;
     align-items: center;
-    scroll-padding-inline-start: 0;}
+    scroll-padding-inline-start: 0;
+padding: 1rem;}
 }

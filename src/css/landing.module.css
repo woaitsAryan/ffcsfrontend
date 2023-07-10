@@ -22,11 +22,16 @@ body {
   width: max-content;
   z-index: 0;
 }
+.ttContainerBorder::-webkit-scrollbar {
+  display: none;
+}
 .mainflexbox {
+  position: relative;
+  top:30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100%;
+  max-width: fit-content;
   height: fit-content;
 }
 
@@ -49,6 +54,8 @@ body {
 }
 
 .courseTypeContainer {
+  margin-left: 40px;
+  margin-right: 40px;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -77,6 +84,7 @@ button{
 .ttBtnContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 55%;
   flex-direction: column;
 }
@@ -88,8 +96,7 @@ button{
   margin: 0.4rem;
   border-radius: 10px;
   font-weight: 600;
-  background: #bf5af2;
-  color: #fff;
+  color: #000;
   border: none;
 }
 
@@ -106,8 +113,8 @@ button{
   min-width: 30%;
   position: absolute;
   top: 100%;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  border: 5px solid #000;
+  background-color: white;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -117,10 +124,14 @@ button{
 
 .dropdownContent p {
   font-size: large;
-  margin: 0;
+  margin: 10px;
   padding: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+label{
+  margin: 5px;
+  text-align: center;
 }
 
 .dropdownContent p:hover {
@@ -149,8 +160,7 @@ button{
   margin: 0.4rem;
   border-radius: 10px;
   font-weight: 600;
-  background: #bf5af2;
-  color: #fff;
+  color: #000;
   border: none;
 }
 
@@ -189,16 +199,22 @@ button{
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 2%;
 }
-body{
-  overflow-x: hidden;
-}
+
 @media (max-width: 550px) {
+  .subjectSelectionContainer{
+    position: relative;
+    top: 100px;
+  }
+  .courseSlotContainer{
+    margin: auto;
+  }
   .ttContainerBorder{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
+    max-height: max-content;
   }
   body{
     width: 100vw;
@@ -206,6 +222,8 @@ body{
     height: 100%;
   }
   .mainflexbox {
+    position: relative;
+    top:-2.8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -220,6 +238,8 @@ body{
   }
 
   .mainflexbox2 {
+    position: relative;
+    top:50px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -230,15 +250,14 @@ body{
   }
 
   .courseTypeContainer {
-    margin-left: 10px;
+    margin-left: 20px;
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow-x: auto;
     gap: 1rem;
     padding-bottom: 1rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    
   }
 
   .inputCourseNameContainer {
@@ -258,6 +277,7 @@ body{
   .ttBtnContainer {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 45%;
     flex-direction: column;
   }
@@ -269,8 +289,7 @@ body{
     margin: 0.4rem;
     border-radius: 10px;
     font-weight: 600;
-    background: #bf5af2;
-    color: #fff;
+    color: #000;
     border: none;
   }
 
@@ -282,12 +301,13 @@ body{
   }
 
   .dropdownContent {
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    transition: opacity 0.5s ease, visibility 0s linear 0.3s;
     border-radius: 10px;
     min-width: 30%;
     position: absolute;
     top: 100%;
-    background-color: #f9f9f9;
+    border: 5px solid #000;
+    background-color: white;
     border: 1px solid #ddd;
     padding: 10px;
     display: flex;
@@ -298,7 +318,7 @@ body{
 
   .dropdownContent p {
     font-size: large;
-    margin: 0;
+    margin: 10px;
     padding: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -317,6 +337,7 @@ body{
     justify-content: center;
     align-items: center;
   }
+  
 
   .Btn {
     height: fit-content;
@@ -325,8 +346,7 @@ body{
     margin: 0.4rem;
     border-radius: 10px;
     font-weight: 600;
-    background: #bf5af2;
-    color: #fff;
+    color: #000;
     border: none;
   }
 

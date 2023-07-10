@@ -43,19 +43,20 @@
 }
 @media (max-width: 550px) {
   .container {
-    min-width: max-content;
-    max-height: 30%;
+    min-width: 90px;
+    min-height: fit-content;
     display: flex;
-    flex: 0 0 20%;
+    /* flex: 0 0 20%; */
     scroll-snap-align: start;
-    padding: 6px;
+    /* padding: 6px; */
     scroll-snap-align: start;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     border: 5px solid black;
     border-radius: 20px;
-    margin:0%;
+    /* margin:auto; */
     /* margin-left: 3%; */
     overflow-x: hidden;
   }
@@ -65,12 +66,12 @@
   }
   
   .image {
-    margin-top: 1.5%;
-    min-width: 100px;
-    max-height: 100%;
+    /* margin: auto; */
+    max-width: 70px;
+    max-height: 70px;
     height: auto;
     flex: 1;
-    object-fit: fill;
+    object-fit: contain;
   }
   
   .title {
@@ -80,7 +81,6 @@
     word-break: break-all; */
     text-align: center;
     margin-top: 0;
-    white-space: normal;
     font-size: 1.0rem;
     margin-bottom: 0;
     font-weight: bold;
