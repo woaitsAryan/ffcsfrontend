@@ -1,4 +1,4 @@
-import React, {useState,ChangeEvent} from "react";
+import React, {useState,ChangeEvent, useRef} from "react";
 // import Navbar from '../components/Navbar';
 import Modal from "../components/Modal";
 import Hero from "../components/Hero";
@@ -15,6 +15,8 @@ import removeData from "../handlers/removeData";
 import addData from "../handlers/addData";
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import html2canvas from 'html2canvas';
+
 let scheduleData = [
   {   "day": "Monday",
       "data": [
@@ -115,6 +117,7 @@ interface Slot {
 }
 
 const Landing = () => { 
+  const componentRef = useRef(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [arrowRotation, setArrowRotation] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -132,6 +135,29 @@ const Landing = () => {
     }
   };
 
+  const captureScreenshot = () => {
+          console.log('hi')
+
+    if (componentRef.current) {
+      html2canvas(componentRef.current)
+        .then((canvas) => {
+          const screenshot = canvas.toDataURL('image/png');
+          const downloadLink = document.createElement('a');
+            downloadLink.href = screenshot;
+            downloadLink.download = 'screenshot.png';
+            
+            // Programmatically trigger the download
+            downloadLink.click();
+            
+            // Clean up the temporary link element
+            downloadLink.remove();
+          // Use the 'screenshot' data URL as needed, such as saving it to a file or displaying it in an image tag.
+        })
+        .catch((error) => {
+          console.error('Error capturing screenshot:', error);
+        });
+    }
+  };
   const handleUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUrlToCopy(e.target.value);
   };
@@ -171,7 +197,12 @@ const Landing = () => {
     scheduleData = removeData(scheduleData,subjectName,selectedTimetableSlot.labslot?selectedTimetableSlot.labslot:"nuffin");
     scheduleData = addData(scheduleData,subjectName,slot.theoryslot);
     scheduleData = addData(scheduleData,subjectName,slot.labslot?slot.labslot:"nuffin");
-    localStorage.setItem("timetable", JSON.stringify(scheduleData));
+    if(viewFriendTimetable){
+      localStorage.setItem("friendtimetable", JSON.stringify(scheduleData));
+    }
+    else{
+      localStorage.setItem("timetable", JSON.stringify(scheduleData));
+    }
     setSelectedTimetableSlot(slot);
   };
 
@@ -182,7 +213,7 @@ const Landing = () => {
     console.log(username)
     setShareUsername(username);
     setShowShareModal(false);
-    const response = await postHandler("http://127.0.0.1:3000/share/get", {"friendname":shareUsername}, true)
+    const response = await postHandler("http://127.0.0.1:3000/share/addfriend", {"friendname":shareUsername}, true)
     if(response.status === 0){
       toast.error("Please login/friend not found");
       return;
@@ -294,7 +325,7 @@ const Landing = () => {
       <p className={Styles.timetableTitle}>Timetable</p>
       <div className={Styles.btnContainer}>
 
-      <button className={Styles.exportBtn}>Export</button>
+      <button className={Styles.exportBtn} onClick = {captureScreenshot}>Export</button>
       <button className={Styles.Btn} onClick = {handleShareClick}>Share</button>
      
       <button className={Styles.Btn}>Add</button>
@@ -364,7 +395,7 @@ const Landing = () => {
 
 
       <Timetable propToWatch={selectedTimetableSlot} timetableNum = {Timetablenumber} 
-                isfriendTimetable = {viewFriendTimetable} friendTimetableinfo = {friendTimetableInfo} ></Timetable>
+                isfriendTimetable = {viewFriendTimetable} friendTimetableinfo = {friendTimetableInfo} ref={componentRef} ></Timetable>
       </div>
       <Footer></Footer> 
       {showModal && (

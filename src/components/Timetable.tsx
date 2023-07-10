@@ -3,6 +3,7 @@ import defaultdata from './data.json';
 import styles from '../css/timetable.module.css'
 import postHandler from '../handlers/postHandler';
 import Cookies from 'js-cookie';
+import e from 'express';
 
 interface RowEntry {
   day: string;
@@ -14,47 +15,49 @@ interface TimetableProps {
   timetableNum: number;
   isfriendTimetable?: boolean;
   friendTimetableinfo: any;
+  ref?: React.Ref<any>
 }
 
-const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfriendTimetable, friendTimetableinfo}) => {
+const Timetable: React.ForwardRefRenderFunction<any, TimetableProps> = (props, ref) => {
   const [data, setData] = useState(localStorage.getItem('timetable') ? JSON.parse(localStorage.getItem('timetable') as string) : defaultdata);
-
+  const[friendtimetable, setFriendTimetable] = useState(localStorage.getItem('friendtimetable') ? JSON.parse(localStorage.getItem('friendtimetable') as string) : defaultdata);
   useEffect(() => {
     const fetchTimetable = async () => {
-      if(!isfriendTimetable){
+      if(!props.isfriendTimetable){
         const token = Cookies.get('token');
         if (token) {
           try {
             const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
             const { timetable } = response.data;
             if(timetable[0].length > 0){
-              setData(timetable[timetableNum]);
+              setData(timetable[props.timetableNum]);
             }
           } catch (error) {
             console.error('Error fetching timetable:', error);
           }
         }
       }else{
-        const payload = {"num": friendTimetableinfo.timetableid , "userID": friendTimetableinfo.friendid}
+        const payload = {"num": props.friendTimetableinfo.timetableid , "userID": props.friendTimetableinfo.friendid}
         const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
         const {timetable} = response.data
-        setData(timetable);
+        localStorage.setItem('friendtimetable', JSON.stringify(timetable))
+        setFriendTimetable(timetable);
+        console.log("Getting friends timetable")
       }
     }
 
     fetchTimetable();
-  }, [timetableNum, isfriendTimetable]);
+  }, [props.timetableNum, props.isfriendTimetable]);
 
   useEffect(() => {
     const handlePropChange = () => {
       const currenttimetable = JSON.parse(localStorage.getItem('timetable') || 'null')
-      if(currenttimetable){
-        setData(currenttimetable);
-        let friendid = null;
-        if(isfriendTimetable){
-          friendid = friendTimetableinfo.friendid
-        }
-        const payload = {"timetable": currenttimetable, "num": timetableNum , "friendid": friendid}
+      const friendtimetable = JSON.parse(localStorage.getItem('friendtimetable') || 'null')
+      if(props.isfriendTimetable){
+        console.log("Setting friends timetable")
+        setFriendTimetable(friendtimetable);
+        const friendid = props.friendTimetableinfo.friendid
+        const payload = {"timetable": currenttimetable, "num": props.timetableNum , "friendid": friendid}
         console.log(payload)
         postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
         .then((response) => {
@@ -63,11 +66,22 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfrien
         .catch((error) => {
           console.log(error)
         })
-        console.log(currenttimetable)
       }
+      else{
+      if(currenttimetable){
+        setData(currenttimetable);
+        const payload = {"timetable": currenttimetable, "num": props.timetableNum , "friendid": null}
+        postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
+        .then((response) => {
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+     }
     };
     handlePropChange(); 
-  }, [propToWatch]);
+  }, [props.propToWatch]);
 
   return (
     // <div className={styles.mainContainer}>
@@ -113,7 +127,7 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfrien
           <tr>
             <td>{row.day}</td>
             {row.data.map((value, index:number) => (
-             <td className={`${value[1]==='' && value[0] !==''?styles.slots:(value[1]!=='' && value[0]!==''?styles.selectSlots:'')}`}>   
+             <td className={value[0]===''?styles.lunch:styles.slots}>   
              {value[0]}
              {value[1] && (
                <>
@@ -133,4 +147,7 @@ const Timetable: React.FC<TimetableProps> = ({propToWatch, timetableNum, isfrien
   );
 };
 
-export default Timetable;
+const ForwardedTimetable = React.forwardRef(Timetable);
+
+
+export default ForwardedTimetable;
