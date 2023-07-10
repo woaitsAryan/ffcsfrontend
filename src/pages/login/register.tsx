@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import {BarLoader} from "react-spinners"
 import { useNavigate } from "react-router-dom";
 import styles from "../../css/login.module.css";
 import postHandler from "../../handlers/postHandler";
@@ -12,6 +13,8 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [step, setStep] = useState(1);
+  const [showLoader, setShowLoader]=useState(false);
+
   let animationEl = useRef<HTMLDivElement>(null);
   const stepRef = useRef<HTMLDivElement>(null);
   const animationheight = {
@@ -66,7 +69,7 @@ const LoginForm = () => {
       }
       //validate if the password is atleast 8 characters long and has a number
       const payload = { username: username, password: password };
-      console.log(payload);
+      setShowLoader(true);
       postHandler("http://127.0.0.1:3000/register", payload, false).then(
         (response) => {
           const { token } = response.data;
@@ -118,9 +121,12 @@ const LoginForm = () => {
               placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleContinue} className={styles["continue-btn"]}>
+            <button onClick={handleContinue} className={`${showLoader===true?styles.btnHide:styles["continue-btn"]}`}>
               Continue
             </button>
+            {showLoader===true?<BarLoader color="#36d7b7" width='100%'/>
+              :''
+              }
           </div>
         )}
       </div>

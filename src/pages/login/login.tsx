@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import {BarLoader} from "react-spinners"
 import { useNavigate } from "react-router-dom";
 import styles from "../../css/login.module.css";
 import postHandler from "../../handlers/postHandler";
@@ -10,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showLoader, setShowLoader]=useState(false);
   const [step, setStep] = useState(1);
   let animationEl = useRef<HTMLDivElement>(null);
   const stepRef = useRef<HTMLDivElement>(null);
@@ -47,11 +49,11 @@ const LoginForm = () => {
         }
       );
     } else if (step === 2) {
+      setShowLoader(true)
       try {
         const payload = { username: username, password: password };
         const response = await postHandler("http://127.0.0.1:3000/login", payload, false);
-        console.log(response)
-        if(response.statusCode != 200){
+        if(response.stattusCode != 200){
           toast.error('Invalid username/password, kindly sign up')
           navigate("/");
           return;
@@ -86,9 +88,12 @@ const LoginForm = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <button className={styles["continue-btn"]} onClick={handleContinue}>
+           <button onClick={handleContinue} className={`${showLoader===true?styles.btnHide:styles["continue-btn"]}`}>
               Continue
             </button>
+            {showLoader===true?<BarLoader color="#36d7b7" width='100%'/>
+              :''
+              }
           </div>
         )}
 
@@ -105,9 +110,12 @@ const LoginForm = () => {
               placeholder="Enter password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={handleContinue} className={styles["continue-btn"]}>
+            <button onClick={handleContinue} className={`${showLoader===true?styles.btnHide:styles["continue-btn"]}`}>
               Continue
             </button>
+            {showLoader===true?<BarLoader color="#36d7b7" width='100%'/>
+              :''
+              }
           </div>
         )}
       </div>
