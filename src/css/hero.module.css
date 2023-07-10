@@ -1,16 +1,10 @@
 .heroContainer {
   display: flex;
   flex-direction: row;
-  max-width: fit-content;
-  height: 100vh;
   justify-content: center;
-  height: fit-content;
 }
 
 .mainContainer {
-  overflow-x: hidden !important;
-  border-radius: 10px;
-  margin-bottom: 3%;
   gap: 3rem;
   background: rgba(196, 223, 170, 100%);
   position: relative;
@@ -18,26 +12,22 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 100%;
   padding: 2rem;
-  max-height: fit-content;
 }
 
 .heroContainerInfo {
-  max-width: 40%;
-  margin: 2%;
+  width: 40%;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  height: max-content;
 }
 
 h1 {
-  padding-top: 0px;
-  margin-top: 5px;
-  font-size: 100px;
-  display: inline;
-  margin-bottom: 0;
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+h1 span {
+  font-weight: 700;
 }
 
 .heroImg {
@@ -46,87 +36,35 @@ h1 {
   object-fit: contain;
 }
 
-.planner {
-  font-weight: 300;
-  margin: 0;
-  padding-top: 0;
-}
-
 .heroInfo {
-  padding: 0px;
-  margin-top: 5.5%;
-  margin-bottom: 0px;
-  flex-grow: 1;
-  font-size: 2.2rem;
-  /* overflow-wrap: break-word; */
-  /* word-break: break-all; */
-  max-width: 100%;
+  font-size: 2rem;
 }
-@media (max-width: 550px) {
-  .mainContainer {
-    overflow-x: hidden !important;
-    border-radius: 0px;
-    background: rgba(196, 223, 170, 100%);
-    position: relative;
-    top: 1vw;
-    margin: 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 100%;
-    max-height: 75%;
-  }
+
+@media (max-width: 768px) {
   .heroContainer {
-    /* padding: 10px; */
+    flex-direction: column;
+  }
 
-    display: flex;
-    flex-direction: row;
-
-    width: 90%;
-    height: 100vh;
-    justify-content: space-between;
-    padding: 2rem;
-    height: fit-content;
+  .mainContainer {
+    padding: 1rem;
   }
 
   .heroContainerInfo {
-    min-width: 30%;
+    width: 100%;
     padding: 0.5rem;
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    height: max-content;
   }
 
   h1 {
     font-size: 3rem;
-    padding-top: 0px;
-    margin-top: 5px;
-    display: inline;
-    margin-bottom: 0;
   }
 
   .heroImg {
-    min-width: 50%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
-  .planner {
-    font-weight: 300;
-    margin: 0;
-    padding-top: 0;
-  }
-
   .heroInfo {
-    padding: 0px;
-    margin: 0.5%;
-    margin-bottom: 0px;
-    flex-grow: 1;
     font-size: 1rem;
-    word-break: keep-all;
-    max-width: 90%;
   }
 }
