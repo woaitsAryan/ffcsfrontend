@@ -304,6 +304,8 @@ const Landing = () => {
     );
     if (response.status === 0) {
       toast.error("Please login to reset");
+      window.location.reload();
+      
       return;
     }
     toast.success("Successfully reset timetable");
