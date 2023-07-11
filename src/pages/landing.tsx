@@ -325,39 +325,39 @@ const Landing = () => {
           {/* <div className={Styles.gradeint}></div> */}
           <CourseType
             name="Discipline Core"
-            imagePath="Flask Icon.svg"
+            imagePath="CourseIcon1.svg"
             onClick={() => handleCourseTypeClick("disciplinecore")}
           />
           <CourseType
             name="Open Elective"
-            imagePath="Gear Icon.svg"
+            imagePath="CourseIcon2.svg"
             onClick={() => handleCourseTypeClick("openelective")}
           />
           <CourseType
             name="Foundation Core"
-            imagePath="Window Icon.svg"
+            imagePath="CourseIcon3.svg"
             onClick={() => handleCourseTypeClick("foundationcore")}
           />
           <CourseType
             name="Discipline Elective"
-            imagePath="Hammer Icon.svg"
+            imagePath="CourseIcon4.svg"
             onClick={() => handleCourseTypeClick("disciplineelective")}
           />
           <CourseType
             name="Discipline Linked Engineering Sciences"
-            imagePath="Tools Icon.svg"
+            imagePath="CourseIcon5.svg"
             onClick={() =>
               handleCourseTypeClick("disciplinelinkedengineeringsciences")
             }
           />
           <CourseType
             name="Non Graded Core Requirement"
-            imagePath="Guitar Icon.svg"
+            imagePath="CourseIcon6.svg"
             onClick={() => handleCourseTypeClick("nongradedcorerequirement")}
           />
           <CourseType
             name="Projects and Internship"
-            imagePath="Shopping Basket.svg"
+            imagePath="CourseIcon7.svg"
             onClick={() => handleCourseTypeClick("projectsandinternship")}
           />
         </div>

@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
         <div className={styles.heading}>FFCS Planner</div>
-        <img src="ffcsLogo.svg" className={styles.logo} alt="logo"></img>
+        <img src="mainLogo.svg" className={styles.logo} alt="logo"></img>
       </div>
       <ul className={styles.navLinks}>
         {!isLoggedIn && (

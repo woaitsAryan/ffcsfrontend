@@ -1,0 +1,28 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M99.5624 151.479V101.417L117.932 88.4838V151.479L121.685 156.569C122.552 157.745 121.712 159.406 120.252 159.406H97.2423C95.7819 159.406 94.9427 157.745 95.8094 156.569L99.5624 151.479Z" fill="#A2845E"/>
+<path d="M77.4353 43.4272C92.9391 33.5097 97.7651 36.5654 99.5622 57.1945H115.009C117.235 48.1319 116.647 40.3404 125.446 40.5068H131.709L134.214 44.6787H143.816V25.488H134.214L131.709 29.6599H125.446C124.071 22.2053 122.512 20.2901 118.767 19.6473H101.65C87.2912 21.4902 83.4846 28.9667 77.4353 43.4272Z" fill="#1C1C1E" stroke="black" stroke-width="7.12146" stroke-linecap="round" stroke-linejoin="round"/>
+<mask id="path-3-inside-1_641_4976" fill="white">
+<rect x="36.104" y="83.8945" width="23.3793" height="55.0691" rx="4.45091"/>
+</mask>
+<rect x="36.104" y="83.8945" width="23.3793" height="55.0691" rx="4.45091" fill="#007AFF" stroke="black" stroke-width="14.2429" stroke-linejoin="round" mask="url(#path-3-inside-1_641_4976)"/>
+<rect x="110.417" y="117.27" width="25.8843" height="13.3501" rx="6.67505" fill="#63E6E2" stroke="black" stroke-width="7.12146"/>
+<rect x="113.757" y="130.62" width="19.2044" height="11.6813" rx="5.84067" fill="#63E6E2" stroke="black" stroke-width="7.12146"/>
+<rect x="98.7273" y="57.1943" width="19.2044" height="12.5157" rx="4.45091" fill="#FFCC00" stroke="black" stroke-width="7.12146"/>
+<ellipse cx="128.369" cy="110.178" rx="6.26232" ry="6.25786" fill="#63E6E2"/>
+<ellipse cx="128.369" cy="95.9931" rx="6.26232" ry="6.25786" fill="#63E6E2"/>
+<mask id="mask0_641_4976" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="106" y="100" width="35" height="21">
+<rect x="110.417" y="103.92" width="26.7192" height="13.3501" rx="6.67505" stroke="black" stroke-width="7.12146"/>
+</mask>
+<g mask="url(#mask0_641_4976)">
+<rect x="121.622" y="99.7477" width="19.8239" height="22.5283" fill="black"/>
+</g>
+<mask id="mask1_641_4976" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="106" y="87" width="34" height="21">
+<rect x="110.417" y="90.5696" width="25.0493" height="13.3501" rx="6.67505" stroke="black" stroke-width="7.12146"/>
+</mask>
+<g mask="url(#mask1_641_4976)">
+<rect x="120.922" y="86.3977" width="18.585" height="22.5283" fill="black"/>
+</g>
+<path d="M70.3381 134.792H56.1436V88.0665H71.1731C83.6867 77.6204 90.5709 72.1046 99.5623 70.7845C115.059 69.999 121.227 72.4754 121.689 85.5634V117.27H116.679C110.821 116.432 109.065 114.695 109.165 108.926V92.7765C107.191 96.5704 103.669 99.2275 99.5623 100.776V145.222H80.7753L70.3381 134.792Z" fill="#63E6E2"/>
+<path d="M99.5623 100.776V145.222H80.7753L70.3381 134.792H56.1436V88.0665H71.1731C83.6867 77.6204 90.5709 72.1046 99.5623 70.7845C115.059 69.999 121.227 72.4754 121.689 85.5634V117.27H116.679C110.821 116.432 109.065 114.695 109.165 108.926V92.7765M110.834 86.3977C110.723 88.7975 110.129 90.9227 109.165 92.7765M87.4552 102.251C95.842 103.165 105.369 100.074 109.165 92.7765" stroke="black" stroke-width="7.12146" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M99.5624 145.639V151.479L95.8094 156.569C94.9427 157.744 95.7819 159.406 97.2423 159.406H120.252C121.712 159.406 122.552 157.744 121.685 156.569L117.932 151.479V145.639" stroke="black" stroke-width="7.12146" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
