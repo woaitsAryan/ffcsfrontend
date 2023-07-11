@@ -1,25 +1,24 @@
-.mainContainer{
-    background: #F5F0BB;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 100%;
-    background-position: left top, center;
-    width: fit-content;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
-    height: fit-content;
-    padding: 1.5rem;
-    border-radius: 10px;
-    color: #000;
-    font-weight: 400;
-    flex-basis:25% ;
-    object-fit: fill;
-    
+.mainContainer {
+  background: var(--primary);
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100%;
+  background-position: left top, center;
+  width: fit-content;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  height: fit-content;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 400;
+  flex-basis: 25%;
+  object-fit: fill;
 }
-.professorName{
-    font-weight: 700;
+.professorName {
+  font-weight: 700;
 }
 /* .mainContainer::before {
     content: "";
