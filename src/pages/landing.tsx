@@ -312,7 +312,7 @@ const Landing = () => {
   };
 
   return (
-    <div>
+    <div className={Styles.mainContainer}>
       <div className={Styles.mainflexbox}>
         <ButtonProvider>
           <Hero />

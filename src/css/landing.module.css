@@ -2,6 +2,10 @@
   z-index: 1000;
 }
 
+.mainContainer {
+  overflow: hidden;
+}
+
 .ttContainerBorder {
   position: relative;
   display: flex;
