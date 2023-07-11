@@ -1,7 +1,9 @@
 .heroContainer {
   display: flex;
   flex-direction: row;
+  align-content: center;
   justify-content: center;
+  height: fit-content;
 }
 
 .mainContainer {
@@ -23,6 +25,7 @@
 
 h1 {
   font-size: 4.5rem;
+  margin: 0%;
   font-weight: 400;
 }
 
@@ -47,6 +50,7 @@ h1 span {
 
   .mainContainer {
     padding: 1rem;
+    gap : .5rem;
   }
 
   .heroContainerInfo {
