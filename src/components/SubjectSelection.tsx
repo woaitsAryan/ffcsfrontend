@@ -11,6 +11,7 @@ interface Subject {
     faculty: string;
     venue: string;
     labslot?: string;
+    labvenue?: string;
   }[];
 }
 
