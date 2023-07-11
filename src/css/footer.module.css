@@ -5,7 +5,7 @@
 }
 
 .finalMainContainer {
-  background-color: #c4dfaa;
+  background-color: var(--primary);
   padding: 3em 0 1em 0;
 }
 
