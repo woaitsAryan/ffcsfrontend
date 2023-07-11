@@ -131,8 +131,8 @@ label {
   border-radius: 10px;
   font-weight: 600;
   color: #fff;
-  background-color: #425f57;
-  border: 0.3rem solid #425f57;
+  background-color: var(--secondary);
+  border: 0.3rem solid var(--secondary);
   transition: all 150ms ease-in-out;
 }
 
@@ -239,7 +239,7 @@ label {
     border-radius: 10px;
     font-weight: 600;
     color: #000;
-    border: 0.15rem solid #425f57;
+    border: 0.15rem solid var(--secondary);
     background: transparent;
   }
 
@@ -295,7 +295,7 @@ label {
     border-radius: 10px;
     font-weight: 600;
     color: white;
-    background-color: #425f57;
+    background-color: var(--secondary);
     border: none;
   }
 

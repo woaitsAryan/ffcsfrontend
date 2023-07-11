@@ -8,7 +8,7 @@
 
 .mainContainer {
   gap: 3rem;
-  background: rgba(196, 223, 170, 100%);
+  background: var(--primary);
   position: relative;
   display: flex;
   justify-content: center;
@@ -50,7 +50,7 @@ h1 span {
 
   .mainContainer {
     padding: 1rem;
-    gap : .5rem;
+    gap: 0.5rem;
   }
 
   .heroContainerInfo {
