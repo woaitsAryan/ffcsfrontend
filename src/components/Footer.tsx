@@ -7,19 +7,13 @@ const Footer = () => {
         <div className={styles.footerBlock}>
           <h2>About FFCS</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
-            aliquip{" "}
+          FFCS is a system which allows students to plan their courses for the upcoming semester exactly how they wish. It caters to the wants and needs of the entire student body. With this approach, a student can create their own schedule, including the courses they want to take, the timings of their classes, and their preferred professors.
           </p>
         </div>
         <div className={styles.footerBlock}>
           <h2>About CSI</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
-            aliquip
+          Computer Society of India is one of the largest association of computer professionals in India. We are a group of experienced designers, developers and technology enthusiasts who participate in numerous projects and hackathons. To advance technology, we host a wide range of technical and non-technical workshops, conferences, events and competitions.
           </p>
         </div>
       </div>

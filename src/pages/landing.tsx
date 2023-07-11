@@ -115,6 +115,7 @@ interface Slot {
   faculty: string;
   venue: string;
   labslot?: string;
+  labvenue?: string;
 }
 
 const Landing = () => {

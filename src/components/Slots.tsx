@@ -6,6 +6,7 @@ interface Slot {
   faculty: string;
   venue: string;
   labslot?: string;
+  labvenue?: string;
 }
 
 interface SlotsProps {
@@ -22,8 +23,9 @@ const Slots: React.FC<SlotsProps> = ({ slot, onSelect, selectedSlot }) => {
     <div className={styles.mainContainer}>
       <input type="radio" onChange={handleSelect} checked = {slot == selectedSlot}/>
       <div className={styles.slotName}>{slot.theoryslot}</div>
-      <div>{slot.labslot}</div>
       <div>{slot.venue}</div>
+      <div>{slot.labslot}</div>
+      <div>{slot.labvenue}</div>
       <div className={styles.professorName}>{slot.faculty}</div>
     </div>
   );

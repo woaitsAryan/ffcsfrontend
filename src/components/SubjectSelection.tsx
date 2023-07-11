@@ -19,6 +19,7 @@ interface Slot {
   faculty: string;
   venue: string;
   labslot?: string;
+  labvenue?: string;
 }
 
 interface SubjectSelectionProps {
