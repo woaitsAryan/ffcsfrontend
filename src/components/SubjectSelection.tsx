@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../css/subjectSelection.module.css";
 import getHandler from "../handlers/getHandler";
+import {BarLoader} from "react-spinners"
+
 
 interface Subject {
   code: string;
@@ -29,7 +31,7 @@ interface SubjectSelectionProps {
 }
 
 const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, onCheckboxChange, onSubjectChange, timetablenum}) => {
-
+  const [loader,showBarLoader] = useState(false);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [selectedSubject, setSelectedSubject] = useState<string>("");
 
@@ -38,6 +40,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
       try {
         const url = `http://127.0.0.1:3000/courses/${selectedCourseType}`;
         const response = await getHandler(url, false);
+        showBarLoader(true);
         setSubjects(response.data.coursesdata);
       } catch (error) {
         console.error(error);
@@ -80,7 +83,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
         </thead>
         <tbody>
           {
-          subjects !== undefined && subjects.length > 0 ? 
+          subjects !== undefined && subjects.length > 0 && loader===true ? 
             (subjects.map((subject,index) => (
             <tr key={subject.code}>
             <td className={styles.tableData}>
@@ -96,11 +99,11 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
             <td className={styles.tableData}>0.0</td>
             <td className={styles.tableData}>{subject.credits}</td>
           </tr>
-          ))):(
-            <tr>
-               <td colSpan={10} className={styles.tableData}>No subjects found</td>
-            </tr>
-            )}  
+          ))):( subjects===undefined ?<tr>
+            <td colSpan={10} className={styles.tableData}>No subjects found</td>
+         </tr>:
+         <BarLoader color="#36d7b7" width='100%'/>
+                     )}  
         </tbody>
       </table>
     </div>
