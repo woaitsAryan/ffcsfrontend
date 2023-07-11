@@ -252,12 +252,10 @@ const Landing = () => {
     setViewFriendTimetable(false);
   };
   const handleShareModalConfirm = async (username: string) => {
-    console.log(username);
     setShareUsername(username);
     setShowShareModal(false);
-    console.log(shareUsername);
     const response = await postHandler(
-      "http://127.0.0.1:3000/share/addfriend",
+      "https://ffcs-backend.csivit.com/share/addfriend",
       { friendname: username },
       true
     );
@@ -266,11 +264,11 @@ const Landing = () => {
       return;
     }
     const responseid = await postHandler(
-      "http://127.0.0.1:3000/share/get",
+      "https://ffcs-backend.csivit.com/share/get",
       {},
       true
     );
-    const shareID = `http://localhost:3000/timetable/${responseid.data.userID}/${Timetablenumber}`;
+    const shareID = `https://ffcs-backend.csivit.com/${responseid.data.userID}/${Timetablenumber}`;
     await navigator.clipboard.writeText(shareID);
     toast.success("URL copied to clipboard, share it with your friend!");
   };
@@ -280,7 +278,6 @@ const Landing = () => {
     const friendid = urlarr[urlarr.length - 2];
     const timetableid = urlarr[urlarr.length - 1];
     setFriendTimetableInfo({ friendid: friendid, timetableid: timetableid });
-    console.log("set friend timetable  info");
     setViewFriendTimetable(true);
   };
 
@@ -301,7 +298,7 @@ const Landing = () => {
   const handleResetClick = async () => {
     const payload = { num: Timetablenumber };
     const response = await postHandler(
-      "http://127.0.0.1:3000/timetable/reset",
+      "https://ffcs-backend.csivit.com/timetable/reset",
       payload,
       true
     );

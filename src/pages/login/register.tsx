@@ -25,7 +25,6 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (step === 1 && animationEl.current) {
-      console.log(window.innerHeight, animationEl.current.offsetTop);
       gsap.fromTo(
         stepRef.current,
         { y: animationheight.from },
@@ -40,8 +39,7 @@ const LoginForm = () => {
 
   const storeTimetable =async () =>{
     const payload = { "timetable": JSON.parse(localStorage.getItem('timetable') || 'null'), "num": 0 };
-    const response = await postHandler("http://127.0.0.1:3000/timetable/set", payload, true);
-    console.log(response);
+    const response = await postHandler("https://ffcs-backend.csivit.com/timetable/set", payload, true);
 
   }
 
@@ -70,7 +68,7 @@ const LoginForm = () => {
       //validate if the password is atleast 8 characters long and has a number
       const payload = { username: username, password: password };
       setShowLoader(true);
-      postHandler("http://127.0.0.1:3000/register", payload, false).then(
+      postHandler("https://ffcs-backend.csivit.com/register", payload, false).then(
         (response) => {
           const { token } = response.data;
           Cookies.set("token", token, { expires: 30 });

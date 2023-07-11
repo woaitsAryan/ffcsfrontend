@@ -15,7 +15,7 @@ function Timetable() {
   useEffect(()  => {
     const fetchdata = async () =>{
         const payload = {"userID": id, "num": number}
-        const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
+        const response = await postHandler("https://ffcs-backend.csivit.com/share/find", payload, false)
         setResponseData(response.data)
     }
     fetchdata();

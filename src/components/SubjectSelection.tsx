@@ -38,10 +38,8 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({selectedCourseType, 
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const url = `http://127.0.0.1:3000/courses/${selectedCourseType}`;
-        console.log(url)
+        const url = `https://ffcs-backend.csivit.com/courses/${selectedCourseType}`;
         const response = await getHandler(url, false);
-        console.log(response)
         setSubjects(response.data.coursesdata);
       } catch (error) {
         console.error(error);

@@ -23,7 +23,6 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (step === 1 && animationEl.current) {
-      console.log(window.innerHeight, animationEl.current.offsetTop);
       gsap.fromTo(
         stepRef.current,
         { y: animationheight.from },
@@ -52,7 +51,7 @@ const LoginForm = () => {
       setShowLoader(true)
       try {
         const payload = { username: username, password: password };
-        const response = await postHandler("http://127.0.0.1:3000/login", payload, false);
+        const response = await postHandler("https://ffcs-backend.csivit.com/login", payload, false);
         if(response.statusCode != 200){
           toast.error('Invalid username/password, kindly sign up')
           navigate("/");

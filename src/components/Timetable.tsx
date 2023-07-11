@@ -26,7 +26,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
         const token = Cookies.get('token');
         if (token) {
           try {
-            const response = await postHandler('http://127.0.0.1:3000/timetable/get', {}, true);
+            const response = await postHandler('https://ffcs-backend.csivit.com/timetable/get', {}, true);
             const { timetable } = response.data;
             if(timetable[0].length > 0){
               setData(timetable[props.timetableNum]);
@@ -36,14 +36,11 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
           }
         }
       }else{
-        console.log("getting his timetable")
         const payload = {"num": props.friendTimetableinfo.timetableid , "userID": props.friendTimetableinfo.friendid}
-        const response = await postHandler("http://127.0.0.1:3000/share/find", payload, false)
+        const response = await postHandler("https://ffcs-backend.csivit.com/share/find", payload, false)
         const {timetable} = response.data
         localStorage.setItem('friendtimetable', JSON.stringify(timetable))
         setFriendTimetable(timetable);
-        console.log(timetable)
-        console.log("Getting friends timetable")
       }
     }
 
@@ -58,10 +55,8 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
         setFriendTimetable(friendtimetable);
         const friendid = props.friendTimetableinfo.friendid
         const payload = {"timetable": friendtimetable, "num": props.timetableNum , "friendid": friendid}
-        console.log(payload)
-        postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
+        postHandler('https://ffcs-backend.csivit.com/timetable/update', payload,true)
         .then((response) => {
-          console.log(response)
         })
         .catch((error) => {
           console.log(error)
@@ -71,7 +66,7 @@ const Timetable: React.ForwardRefRenderFunction<HTMLDivElement, TimetableProps> 
       if(currenttimetable){
         setData(currenttimetable);
         const payload = {"timetable": currenttimetable, "num": props.timetableNum , "friendid": null}
-        postHandler('http://127.0.0.1:3000/timetable/update', payload,true)
+        postHandler('https://ffcs-backend.csivit.com/timetable/update', payload,true)
         .then((response) => {
         })
         .catch((error) => {

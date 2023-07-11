@@ -13,7 +13,6 @@ const AuthPage: React.FC = () => {
   const [isChecked, setIsChecked] = useState(false);
   const location = useLocation();
   const buttonClicked = (location.state as LocationState)?.buttonClicked;
-  console.log(buttonClicked);
   val = buttonClicked;
   useEffect(() => {}, [buttonClicked]);
 
