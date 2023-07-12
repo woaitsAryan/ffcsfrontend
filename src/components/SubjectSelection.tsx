@@ -104,7 +104,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
         </thead>
         {/* Table Body */}
         <tbody>
-          {loader ? (
+          {!loader ? (
             paginatedSubjects.map((subject, index) => (
               <tr key={subject.code}>
                 <td className={styles.tableData}>
