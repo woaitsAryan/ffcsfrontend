@@ -31,8 +31,16 @@
   background-color: var(--secondary);
   padding: 0.5em 1.5em;
   color: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
+  border: 0.3rem solid var(--secondary);
+  transition: all 150ms ease-in-out;
 }
+
+.navItem1:hover {
+  color: #000;
+  background: transparent;
+}
+
 .logoContainer {
   display: inline-flex;
   flex-direction: row-reverse;
