@@ -173,9 +173,9 @@ label {
   scroll-padding-inline: 2%;
 }
 .subjectSelectionContainer {
-overflow-x: scroll;
-display: flex;
-flex-direction: column;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: column;
 }
 .subjectSelectionContainer :-webkit-scrollbar {
   display: none;

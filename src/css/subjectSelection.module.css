@@ -2,17 +2,16 @@
   margin: auto;
   width: 100%;
   border-spacing: 0.6rem 0.3rem;
-  font-size: 1.0rem;
+  font-size: 1rem;
   display: table;
   background-repeat: no-repeat;
-
 }
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.paginationButton{
+.paginationButton {
   padding: 0.5em 1em;
   font-size: 1rem;
   margin: 0.4rem;
@@ -23,6 +22,12 @@
   border: 0.3rem solid var(--secondary);
   transition: all 150ms ease-in-out;
 }
+
+.paginationButton:hover {
+  color: #000;
+  background: transparent;
+}
+
 .tableHeadings {
   background-size: cover;
   background-position: center;
@@ -50,14 +55,14 @@
   align-items: center;
   margin-bottom: 100px;
 }
-@media (max-width:450px){
+@media (max-width: 450px) {
   .SubjectSelection {
     margin: auto;
     /* margin-left: 25px; */
     overflow-x: scroll;
     width: 100vw;
     border-spacing: 0.6rem 0.3rem;
-    font-size: 1.0rem;
+    font-size: 1rem;
     display: table;
     /* justify-content: center;
     align-items: center; */
@@ -89,5 +94,4 @@
     align-items: center;
     margin-bottom: 100px;
   }
-  
 }
