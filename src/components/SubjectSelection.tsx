@@ -31,7 +31,7 @@ interface SubjectSelectionProps {
   timetablenum: number;
 }
 
-const ITEMS_PER_PAGE = 5; // Number of items to display per page
+const ITEMS_PER_PAGE = 12; // Number of items to display per page
 
 const SubjectSelection: React.FC<SubjectSelectionProps> = ({
   selectedCourseType,
@@ -48,7 +48,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
     const fetchSubjects = async () => {
       try {
         const url = `https://ffcs-backend.csivit.com/courses/${selectedCourseType}`;
-        const response = await getHandler(url, false);
+          const response = await getHandler(url, false);
         showBarLoader(true);
         setSubjects(response.data.coursesdata);
       } catch (error) {
@@ -134,7 +134,45 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
               </td>
             </tr>
           )}
-        </tbody>
+        </tbody><tbody>
+  {loader ? (
+    subjects.length > 0 ? (
+      paginatedSubjects.map((subject, index) => (
+        <tr key={subject.code}>
+          <td className={styles.tableData}>
+            <input
+              type="radio"
+              onClick={() => handleCheckboxClick(subject)}
+              checked={subject.code === selectedSubject}
+            />
+          </td>
+          <td className={styles.tableData}>{index + 1}</td>
+          <td className={styles.tableData}>{subject.code}</td>
+          <td className={styles.tableData}>{subject.name}</td>
+          <td className={styles.tableData}>1.0</td>
+          <td className={styles.tableData}>3.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>{subject.credits}</td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan={10} className={styles.tableData}>
+          No subjects found
+        </td>
+      </tr>
+    )
+  ) : (
+    <tr>
+      <td colSpan={10} className={styles.tableData}>
+        <BarLoader color="#36d7b7" width="100%" />
+      </td>
+    </tr>
+  )}
+</tbody>
+
       </table>
       {/* Pagination */}
       {loader && subjects.length > ITEMS_PER_PAGE && (
@@ -146,7 +184,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
           >
             Previous
           </button>
-          <span className={styles.pageNumber}>{currentPage}</span>
+          <span className={styles.pageNumber}> Currently viewing page:{currentPage}</span>
           <button
             className={`${styles.paginationButton} ${
               currentPage === Math.ceil(subjects.length / ITEMS_PER_PAGE) ? styles.disabled : ""
