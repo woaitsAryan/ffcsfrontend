@@ -13,6 +13,7 @@ interface VerifyResponse {
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showHamburger, setShowHamburger] = useState(false);
 
   useEffect(() => {
     const checkToken = async () => {
@@ -62,13 +63,27 @@ const Navbar: React.FC = () => {
     }, 0); // duration must be 0
   };
 
+  const showHamburgerHandler = () => {
+    if (!showHamburger) {
+      setShowHamburger(true);
+    } else {
+      setShowHamburger(false);
+    }
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
         <div className={styles.heading}>FFCS Planner</div>
         <img src="mainLogo.svg" className={styles.logo} alt="logo"></img>
       </div>
-      <ul className={styles.navLinks}>
+      <ul
+        className={
+          showHamburger
+            ? `${styles.navmenu}  ${styles.active}`
+            : `${styles.navmenu}`
+        }
+      >
         {!isLoggedIn && (
           <>
             <li className={styles.navItem} onClick={handleLogin}>
@@ -85,6 +100,19 @@ const Navbar: React.FC = () => {
           </li>
         )}
       </ul>
+
+      <div
+        className={
+          showHamburger
+            ? `${styles.hamburger}  ${styles.active}`
+            : `${styles.hamburger}`
+        }
+        onClick={showHamburgerHandler}
+      >
+        <span className={styles.bar}></span>
+        <span className={styles.bar}></span>
+        <span className={styles.bar}></span>
+      </div>
     </nav>
   );
 };
