@@ -45,8 +45,8 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const url = `http://127.0.0.1:3000/courses/${selectedCourseType}`;
-        const response = await getHandler(url, false);
+        const url = `https://ffcs-backend.csivit.com/courses/${selectedCourseType}`;
+          const response = await getHandler(url, false);
         showBarLoader(true);
         setSubjects(response.data.coursesdata);
       } catch (error) {
@@ -132,7 +132,45 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
               </td>
             </tr>
           )}
-        </tbody>
+        </tbody><tbody>
+  {loader ? (
+    subjects.length > 0 ? (
+      paginatedSubjects.map((subject, index) => (
+        <tr key={subject.code}>
+          <td className={styles.tableData}>
+            <input
+              type="radio"
+              onClick={() => handleCheckboxClick(subject)}
+              checked={subject.code === selectedSubject}
+            />
+          </td>
+          <td className={styles.tableData}>{index + 1}</td>
+          <td className={styles.tableData}>{subject.code}</td>
+          <td className={styles.tableData}>{subject.name}</td>
+          <td className={styles.tableData}>1.0</td>
+          <td className={styles.tableData}>3.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>0.0</td>
+          <td className={styles.tableData}>{subject.credits}</td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan={10} className={styles.tableData}>
+          No subjects found
+        </td>
+      </tr>
+    )
+  ) : (
+    <tr>
+      <td colSpan={10} className={styles.tableData}>
+        <BarLoader color="#36d7b7" width="100%" />
+      </td>
+    </tr>
+  )}
+</tbody>
+
       </table>
       {/* Pagination */}
       {loader && subjects.length > ITEMS_PER_PAGE && (
