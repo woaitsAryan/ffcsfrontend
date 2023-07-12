@@ -7,6 +7,22 @@
   background-repeat: no-repeat;
 
 }
+.pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginationButton{
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  margin: 0.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--secondary);
+  border: 0.3rem solid var(--secondary);
+  transition: all 150ms ease-in-out;
+}
 .tableHeadings {
   background-size: cover;
   background-position: center;
@@ -29,6 +45,7 @@
 .SubjectSelectionContainer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   margin-bottom: 100px;

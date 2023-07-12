@@ -172,7 +172,14 @@ label {
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 2%;
 }
-
+.subjectSelectionContainer {
+overflow-x: scroll;
+display: flex;
+flex-direction: column;
+}
+.subjectSelectionContainer :-webkit-scrollbar {
+  display: none;
+}
 @media (max-width: 768px) {
   .subjectSelectionContainer {
     top: 100px;

@@ -29,7 +29,7 @@ interface SubjectSelectionProps {
   timetablenum: number;
 }
 
-const ITEMS_PER_PAGE = 5; // Number of items to display per page
+const ITEMS_PER_PAGE = 12; // Number of items to display per page
 
 const SubjectSelection: React.FC<SubjectSelectionProps> = ({
   selectedCourseType,
@@ -182,7 +182,7 @@ const SubjectSelection: React.FC<SubjectSelectionProps> = ({
           >
             Previous
           </button>
-          <span className={styles.pageNumber}>{currentPage}</span>
+          <span className={styles.pageNumber}> Currently viewing page:{currentPage}</span>
           <button
             className={`${styles.paginationButton} ${
               currentPage === Math.ceil(subjects.length / ITEMS_PER_PAGE) ? styles.disabled : ""
